@@ -37,9 +37,8 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jpAlunoMatricula" min="-2" pref="319" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
+              <Component id="jpAlunoMatricula" min="-2" pref="275" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -50,7 +49,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
@@ -58,9 +57,9 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-                          <Component id="jbtnConfirmarAlunoMatricula" min="-2" max="-2" attributes="0"/>
+                          <Component id="jbtnConfirmarTelaLogin" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                          <Component id="jbtnConfirmarAlunoMatricula1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jbtnCancelarTelaLogin" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="86" max="32767" attributes="0"/>
@@ -68,15 +67,14 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jlblNomeAlunoMatricula1" min="-2" max="-2" attributes="0"/>
-                      <Component id="jlblNomeAlunoMatricula" min="-2" max="-2" attributes="0"/>
-                      <Component id="jlblNomeAlunoMatricula2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlblSenhaTelaLogin" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlblUsuarioTelaLogin" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jtfNomeAlunoMatricula" pref="180" max="32767" attributes="0"/>
-                      <Component id="jPasswordField1" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jPasswordField2" max="32767" attributes="0"/>
+                      <Component id="jtfUsuarioTelaLogin" pref="180" max="32767" attributes="0"/>
+                      <Component id="jpfSenhaTelaLogin" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jlblEsqueciSenha" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               </Group>
@@ -87,25 +85,22 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jlblNomeAlunoMatricula" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jtfNomeAlunoMatricula" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlblUsuarioTelaLogin" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jtfUsuarioTelaLogin" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jlblNomeAlunoMatricula1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jPasswordField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlblSenhaTelaLogin" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jpfSenhaTelaLogin" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jlblEsqueciSenha" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jlblNomeAlunoMatricula2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jPasswordField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jbtnConfirmarTelaLogin" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jbtnCancelarTelaLogin" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jbtnConfirmarAlunoMatricula" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jbtnConfirmarAlunoMatricula1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
                   <Component id="jlblNomeAlunoMatricula6" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -113,7 +108,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jlblNomeAlunoMatricula">
+        <Component class="javax.swing.JLabel" name="jlblUsuarioTelaLogin">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI Historic" size="14" style="1"/>
@@ -128,16 +123,16 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtfNomeAlunoMatricula">
+        <Component class="javax.swing.JTextField" name="jtfUsuarioTelaLogin">
           <Properties>
             <Property name="text" type="java.lang.String" value="Entre 6 a 18 caracteres"/>
           </Properties>
           <Events>
-            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtfNomeAlunoMatriculaFocusGained"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfNomeAlunoMatriculaActionPerformed"/>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtfUsuarioTelaLoginFocusGained"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfUsuarioTelaLoginActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jlblNomeAlunoMatricula1">
+        <Component class="javax.swing.JLabel" name="jlblSenhaTelaLogin">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI Historic" size="14" style="1"/>
@@ -145,15 +140,7 @@
             <Property name="text" type="java.lang.String" value="Senha"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jlblNomeAlunoMatricula2">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI Historic" size="14" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Confirmar senha"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="jbtnConfirmarAlunoMatricula">
+        <Component class="javax.swing.JButton" name="jbtnConfirmarTelaLogin">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI Black" size="14" style="1"/>
@@ -161,7 +148,7 @@
             <Property name="text" type="java.lang.String" value="Confirmar"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jbtnConfirmarAlunoMatricula1">
+        <Component class="javax.swing.JButton" name="jbtnCancelarTelaLogin">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI Black" size="14" style="1"/>
@@ -169,15 +156,24 @@
             <Property name="text" type="java.lang.String" value="Cancelar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnConfirmarAlunoMatricula1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnCancelarTelaLoginActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="jPasswordField1">
+        <Component class="javax.swing.JPasswordField" name="jpfSenhaTelaLogin">
           <Properties>
             <Property name="toolTipText" type="java.lang.String" value="Insira uma senha de no m&#xed;nimo 6 caracteres contendo Ma&#xed;sculas, m&#xed;nusculas, n&#xfa;meros e caracters especiais."/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="jPasswordField2">
+        <Component class="javax.swing.JLabel" name="jlblEsqueciSenha">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Palatino Linotype" size="12" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="66" red="0" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Esqueci minha senha"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

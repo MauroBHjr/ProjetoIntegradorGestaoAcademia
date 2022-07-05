@@ -8,12 +8,12 @@ package view;
  *
  * @author 182110041
  */
-public class alunoMatricula extends javax.swing.JFrame {
+public class telaLoginFuncionario extends javax.swing.JFrame {
 
     /**
      * Creates new form alunoMatricula
      */
-    public alunoMatricula() {
+    public telaLoginFuncionario() {
         initComponents();
     }
 
@@ -28,53 +28,53 @@ public class alunoMatricula extends javax.swing.JFrame {
 
         jbtngSexoAlunoMatricula = new javax.swing.ButtonGroup();
         jpAlunoMatricula = new javax.swing.JPanel();
-        jlblNomeAlunoMatricula = new javax.swing.JLabel();
+        jlblUsuarioTelaLogin = new javax.swing.JLabel();
         jlblNomeAlunoMatricula6 = new javax.swing.JLabel();
-        jtfNomeAlunoMatricula = new javax.swing.JTextField();
-        jlblNomeAlunoMatricula1 = new javax.swing.JLabel();
-        jlblNomeAlunoMatricula2 = new javax.swing.JLabel();
-        jbtnConfirmarAlunoMatricula = new javax.swing.JButton();
-        jbtnConfirmarAlunoMatricula1 = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        jtfUsuarioTelaLogin = new javax.swing.JTextField();
+        jlblSenhaTelaLogin = new javax.swing.JLabel();
+        jbtnConfirmarTelaLogin = new javax.swing.JButton();
+        jbtnCancelarTelaLogin = new javax.swing.JButton();
+        jpfSenhaTelaLogin = new javax.swing.JPasswordField();
+        jlblEsqueciSenha = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jlblNomeAlunoMatricula.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
-        jlblNomeAlunoMatricula.setText("Usuário");
+        jlblUsuarioTelaLogin.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        jlblUsuarioTelaLogin.setText("Usuário");
 
         jlblNomeAlunoMatricula6.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
 
-        jtfNomeAlunoMatricula.setText("Entre 6 a 18 caracteres");
-        jtfNomeAlunoMatricula.addFocusListener(new java.awt.event.FocusAdapter() {
+        jtfUsuarioTelaLogin.setText("Entre 6 a 18 caracteres");
+        jtfUsuarioTelaLogin.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jtfNomeAlunoMatriculaFocusGained(evt);
+                jtfUsuarioTelaLoginFocusGained(evt);
             }
         });
-        jtfNomeAlunoMatricula.addActionListener(new java.awt.event.ActionListener() {
+        jtfUsuarioTelaLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfNomeAlunoMatriculaActionPerformed(evt);
+                jtfUsuarioTelaLoginActionPerformed(evt);
             }
         });
 
-        jlblNomeAlunoMatricula1.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
-        jlblNomeAlunoMatricula1.setText("Senha");
+        jlblSenhaTelaLogin.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        jlblSenhaTelaLogin.setText("Senha");
 
-        jlblNomeAlunoMatricula2.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
-        jlblNomeAlunoMatricula2.setText("Confirmar senha");
+        jbtnConfirmarTelaLogin.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jbtnConfirmarTelaLogin.setText("Confirmar");
 
-        jbtnConfirmarAlunoMatricula.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jbtnConfirmarAlunoMatricula.setText("Confirmar");
-
-        jbtnConfirmarAlunoMatricula1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jbtnConfirmarAlunoMatricula1.setText("Cancelar");
-        jbtnConfirmarAlunoMatricula1.addActionListener(new java.awt.event.ActionListener() {
+        jbtnCancelarTelaLogin.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jbtnCancelarTelaLogin.setText("Cancelar");
+        jbtnCancelarTelaLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnConfirmarAlunoMatricula1ActionPerformed(evt);
+                jbtnCancelarTelaLoginActionPerformed(evt);
             }
         });
 
-        jPasswordField1.setToolTipText("Insira uma senha de no mínimo 6 caracteres contendo Maísculas, mínusculas, números e caracters especiais.");
+        jpfSenhaTelaLogin.setToolTipText("Insira uma senha de no mínimo 6 caracteres contendo Maísculas, mínusculas, números e caracters especiais.");
+
+        jlblEsqueciSenha.setFont(new java.awt.Font("Palatino Linotype", 0, 12)); // NOI18N
+        jlblEsqueciSenha.setForeground(new java.awt.Color(0, 102, 255));
+        jlblEsqueciSenha.setText("Esqueci minha senha");
 
         javax.swing.GroupLayout jpAlunoMatriculaLayout = new javax.swing.GroupLayout(jpAlunoMatricula);
         jpAlunoMatricula.setLayout(jpAlunoMatriculaLayout);
@@ -87,21 +87,20 @@ public class alunoMatricula extends javax.swing.JFrame {
                         .addComponent(jlblNomeAlunoMatricula6))
                     .addGroup(jpAlunoMatriculaLayout.createSequentialGroup()
                         .addGap(65, 65, 65)
-                        .addComponent(jbtnConfirmarAlunoMatricula)
+                        .addComponent(jbtnConfirmarTelaLogin)
                         .addGap(55, 55, 55)
-                        .addComponent(jbtnConfirmarAlunoMatricula1)))
+                        .addComponent(jbtnCancelarTelaLogin)))
                 .addContainerGap(86, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpAlunoMatriculaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlblNomeAlunoMatricula1)
-                    .addComponent(jlblNomeAlunoMatricula)
-                    .addComponent(jlblNomeAlunoMatricula2))
-                .addGap(40, 40, 40)
+                    .addComponent(jlblSenhaTelaLogin)
+                    .addComponent(jlblUsuarioTelaLogin))
+                .addGap(97, 97, 97)
                 .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jtfNomeAlunoMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                    .addComponent(jPasswordField1)
-                    .addComponent(jPasswordField2))
+                    .addComponent(jtfUsuarioTelaLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                    .addComponent(jpfSenhaTelaLogin)
+                    .addComponent(jlblEsqueciSenha, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(27, 27, 27))
         );
         jpAlunoMatriculaLayout.setVerticalGroup(
@@ -109,21 +108,19 @@ public class alunoMatricula extends javax.swing.JFrame {
             .addGroup(jpAlunoMatriculaLayout.createSequentialGroup()
                 .addGap(106, 106, 106)
                 .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlblNomeAlunoMatricula)
-                    .addComponent(jtfNomeAlunoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlblUsuarioTelaLogin)
+                    .addComponent(jtfUsuarioTelaLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlblNomeAlunoMatricula1)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlblSenhaTelaLogin)
+                    .addComponent(jpfSenhaTelaLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jlblEsqueciSenha)
                 .addGap(18, 18, 18)
                 .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlblNomeAlunoMatricula2)
-                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbtnConfirmarAlunoMatricula)
-                    .addComponent(jbtnConfirmarAlunoMatricula1))
-                .addGap(62, 62, 62)
+                    .addComponent(jbtnConfirmarTelaLogin)
+                    .addComponent(jbtnCancelarTelaLogin))
+                .addGap(97, 97, 97)
                 .addComponent(jlblNomeAlunoMatricula6)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -140,26 +137,25 @@ public class alunoMatricula extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jpAlunoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jpAlunoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtfNomeAlunoMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNomeAlunoMatriculaActionPerformed
+    private void jtfUsuarioTelaLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfUsuarioTelaLoginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtfNomeAlunoMatriculaActionPerformed
+    }//GEN-LAST:event_jtfUsuarioTelaLoginActionPerformed
 
-    private void jtfNomeAlunoMatriculaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfNomeAlunoMatriculaFocusGained
+    private void jtfUsuarioTelaLoginFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfUsuarioTelaLoginFocusGained
         // TODO add your handling code here:
-        jtfNomeAlunoMatricula.setText("");
-    }//GEN-LAST:event_jtfNomeAlunoMatriculaFocusGained
+        jtfUsuarioTelaLogin.setText("");
+    }//GEN-LAST:event_jtfUsuarioTelaLoginFocusGained
 
-    private void jbtnConfirmarAlunoMatricula1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnConfirmarAlunoMatricula1ActionPerformed
+    private void jbtnCancelarTelaLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCancelarTelaLoginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnConfirmarAlunoMatricula1ActionPerformed
+    }//GEN-LAST:event_jbtnCancelarTelaLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,35 +174,35 @@ public class alunoMatricula extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(alunoMatricula.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(telaLoginFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(alunoMatricula.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(telaLoginFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(alunoMatricula.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(telaLoginFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(alunoMatricula.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(telaLoginFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new alunoMatricula().setVisible(true);
+                new telaLoginFuncionario().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JButton jbtnConfirmarAlunoMatricula;
-    private javax.swing.JButton jbtnConfirmarAlunoMatricula1;
+    private javax.swing.JButton jbtnCancelarTelaLogin;
+    private javax.swing.JButton jbtnConfirmarTelaLogin;
     private javax.swing.ButtonGroup jbtngSexoAlunoMatricula;
-    private javax.swing.JLabel jlblNomeAlunoMatricula;
-    private javax.swing.JLabel jlblNomeAlunoMatricula1;
-    private javax.swing.JLabel jlblNomeAlunoMatricula2;
+    private javax.swing.JLabel jlblEsqueciSenha;
     private javax.swing.JLabel jlblNomeAlunoMatricula6;
+    private javax.swing.JLabel jlblSenhaTelaLogin;
+    private javax.swing.JLabel jlblUsuarioTelaLogin;
     private javax.swing.JPanel jpAlunoMatricula;
-    private javax.swing.JTextField jtfNomeAlunoMatricula;
+    private javax.swing.JPasswordField jpfSenhaTelaLogin;
+    private javax.swing.JTextField jtfUsuarioTelaLogin;
     // End of variables declaration//GEN-END:variables
 }
