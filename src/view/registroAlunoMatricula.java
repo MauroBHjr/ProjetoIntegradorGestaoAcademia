@@ -4,11 +4,15 @@
  */
 package view;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author Mauro B H Jr
  */
 public class registroAlunoMatricula extends javax.swing.JFrame {
+    
+    JButton btnClick = null;
 
     /**
      * Creates new form alunoMatricula
