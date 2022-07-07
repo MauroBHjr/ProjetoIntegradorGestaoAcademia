@@ -6,7 +6,7 @@ package view;
 
 /**
  *
- * @author 182110041
+ * @author Mauro B H Jr
  */
 public class registroAlunoMatricula extends javax.swing.JFrame {
 
