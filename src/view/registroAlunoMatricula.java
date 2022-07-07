@@ -4,7 +4,9 @@
  */
 package view;
 
+import java.sql.SQLException;
 import javax.swing.JButton;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,6 +19,37 @@ public class registroAlunoMatricula extends javax.swing.JFrame {
     /**
      * Creates new form alunoMatricula
      */
+    
+    /*
+    =============================================================================================
+    ================= talvez eu tenha quer colocar o "registroAlunoMatrícula" antes do rowtotable
+    =============================================================================================
+    */
+    /*
+    public void addRowToTableBD() throws SQLException {
+        //Cria obj model e recebe a modelagem da tabela JtPessoa do JFrame
+        /*
+        Necessária a criação do jTable Pessoas na janela para que possa ser exibido
+        outra hora eu vejo onde eu vou inserir isso, mas fica aqui a referência de qualquer forma
+        DefaultTableModel model = (DefaultTableModel) jtPessoas.getModel();
+        *//*
+        model.getDataVector().removeAllElements();
+        model.fireTableDataChanged();
+        Object rowData[] = new Object[4]; //cria vetor para as colunas da tabela
+        PessoaServicos pessoaS = ServicosFactory.getPessoaServicos();
+        for (Pessoa p : pessoaS.getPessoas()) {
+            rowData[0] = p.getNomePessoa();
+            rowData[1] = p.getCpf();
+            rowData[2] = p.getTelefone();
+            if (p.isStatus()) {
+                rowData[3] = "Ativo";
+            } else {
+                rowData[3] = "Inativo";
+            }
+            model.addRow(rowData);
+        }
+    }
+    */
     public registroAlunoMatricula() {
         initComponents();
     }
