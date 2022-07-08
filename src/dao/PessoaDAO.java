@@ -17,6 +17,10 @@ import model.Pessoa;
  * @author Mauro BH Jr
  */
 public class PessoaDAO {
+    
+    /*
+    DAO seria o Controller
+    */
 
     /*
     Coisas que precisam ser feitas ainda:
@@ -30,6 +34,38 @@ public class PessoaDAO {
     ---- formatar alguns campos como o de data, telefone e documentos
     ---- tooltips com instruções
     ---- Fazer texto clicável para o recuperar senha
+    
+    ------------------- MySQL -------------------------
+    criar um schema no mySQL para então fazer toda treta com o
+    XAMPP no Apache phpmyadmin e editar no admin do MySQL e então
+    criar e inserir uma modificação do seguinte modelo de Banco de dados
+    
+    create schema devm211;
+
+use devm211;
+
+CREATE TABLE pessoa (
+    idPessoa INT PRIMARY KEY AUTO_INCREMENT,
+    nomePessoa VARCHAR(60) NOT NULL,
+    cpf VARCHAR(20) UNIQUE,
+    endereco VARCHAR(60),
+    telefone VARCHAR(20),
+    idade INT,
+    status BOOLEAN
+);
+
+create table carro(
+	idCarro int primary key auto_increment,
+    placa varchar(8) unique not null,
+    marca varchar(20),
+    modelo varchar(30),
+    anoFabricacao int,
+    anoModelo int,
+    cor varchar(10),
+    nPortas int,
+    idPessoa int,
+    foreign key (idPessoa) references pessoa(idPessoa)
+);
      */
     public void cadastrarPessoa(Pessoa pVO) throws SQLException {
         //Buscar conexão do Banco de Dados
