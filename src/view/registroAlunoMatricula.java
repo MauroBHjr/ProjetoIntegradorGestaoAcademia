@@ -52,6 +52,7 @@ public class registroAlunoMatricula extends javax.swing.JFrame {
     */
     public registroAlunoMatricula() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
