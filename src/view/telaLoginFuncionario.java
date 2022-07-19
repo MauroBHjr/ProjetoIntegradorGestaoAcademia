@@ -4,6 +4,10 @@
  */
 package view;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JFrame;
+
 /**
  *
  * @author 182110041
@@ -15,6 +19,32 @@ public class telaLoginFuncionario extends javax.swing.JFrame {
      */
     public telaLoginFuncionario() {
         initComponents();
+        
+        jlblEsqueciSenha.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e){
+                System.out.println("clicado");
+                //tenho que ver como voou fazer o frame
+                JFrame frameRecuperaSenha = new JFrame("Recuperação de senha");
+                frameRecuperaSenha.setVisible(true);
+                
+                frameRecuperaSenha.setSize(350, 100);
+                frameRecuperaSenha.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                //frameRecuperaSenha.setLayout(new FlowLayout(FlowLayout.CENTER, 30, 20));
+        //painel.add(btnCadPessoa);
+        //painel.add(btnCadCarros);
+        //janela.add(painel);
+        //janela.setVisible(true);
+        //btnCadPessoa.addActionListener(this);
+        //btnCadCarros.addActionListener(this);
+                
+                
+                
+            }
+        });
+
+        
+        
+        
     }
 
     /**
@@ -93,10 +123,10 @@ public class telaLoginFuncionario extends javax.swing.JFrame {
                 .addContainerGap(86, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpAlunoMatriculaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlblSenhaTelaLogin)
-                    .addComponent(jlblUsuarioTelaLogin))
-                .addGap(97, 97, 97)
+                .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jlblUsuarioTelaLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+                    .addComponent(jlblSenhaTelaLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(88, 88, 88)
                 .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jtfUsuarioTelaLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
                     .addComponent(jpfSenhaTelaLogin)
