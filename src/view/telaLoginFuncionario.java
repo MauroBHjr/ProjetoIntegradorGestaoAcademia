@@ -4,9 +4,13 @@
  */
 package view;
 
+import java.awt.FlowLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  *
@@ -24,18 +28,40 @@ public class telaLoginFuncionario extends javax.swing.JFrame {
             public void mouseClicked(MouseEvent e){
                 System.out.println("clicado");
                 //tenho que ver como voou fazer o frame
-                JFrame frameRecuperaSenha = new JFrame("Recuperação de senha");
+                JFrame frameRecuperaSenha = new JFrame("Recuperar senha");
+                JPanel painelRecuperarSenha = new JPanel();
+                JLabel jlblAvisoSairRecuperarSenha = new JLabel("Função ainda não implementada, favor fechar.");
+                JButton jbtnSairRecuperarSenha = new JButton("OK");
                 frameRecuperaSenha.setVisible(true);
                 
-                frameRecuperaSenha.setSize(350, 100);
+                frameRecuperaSenha.setSize(400, 300);
                 frameRecuperaSenha.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                //frameRecuperaSenha.setLayout(new FlowLayout(FlowLayout.CENTER, 30, 20));
-        //painel.add(btnCadPessoa);
-        //painel.add(btnCadCarros);
+                frameRecuperaSenha.setLayout(new FlowLayout(FlowLayout.CENTER, 30, 20));
+                painelRecuperarSenha.add(jlblAvisoSairRecuperarSenha);
+                painelRecuperarSenha.add(jbtnSairRecuperarSenha);
         //janela.add(painel);
         //janela.setVisible(true);
         //btnCadPessoa.addActionListener(this);
         //btnCadCarros.addActionListener(this);
+        
+        /*
+        try (UsuarioServicos uServicos = ServicosFactory.getUsuarioServicos();) {
+            Usuario u = uServicos.getByUsuario(jtfUsuario.getText());
+            String senha = NLogin.geraSenha(String.valueOf(jpfSenha.getPassword()));
+            if (senha.equals(u.getSenha())){
+                Principal pForm = new Principal();
+                pForm.setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(rootPane, "Usuário ou senha incorretos.", ".: Erro Login :.",JOptionPane.INFORMATION_MESSAGE );
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        */
                 
                 
                 
@@ -66,13 +92,21 @@ public class telaLoginFuncionario extends javax.swing.JFrame {
         jbtnCancelarTelaLogin = new javax.swing.JButton();
         jpfSenhaTelaLogin = new javax.swing.JPasswordField();
         jlblEsqueciSenha = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("SCHERHOM ACADEMIA - Login");
+
+        jpAlunoMatricula.setBackground(new java.awt.Color(255, 255, 255));
+        jpAlunoMatricula.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jlblUsuarioTelaLogin.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jlblUsuarioTelaLogin.setText("Usuário");
+        jpAlunoMatricula.add(jlblUsuarioTelaLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 59, -1));
 
         jlblNomeAlunoMatricula6.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        jpAlunoMatricula.add(jlblNomeAlunoMatricula6, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 331, -1, -1));
 
         jtfUsuarioTelaLogin.setText("Entre 6 a 18 caracteres");
         jtfUsuarioTelaLogin.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -85,12 +119,15 @@ public class telaLoginFuncionario extends javax.swing.JFrame {
                 jtfUsuarioTelaLoginActionPerformed(evt);
             }
         });
+        jpAlunoMatricula.add(jtfUsuarioTelaLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 180, -1));
 
         jlblSenhaTelaLogin.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jlblSenhaTelaLogin.setText("Senha");
+        jpAlunoMatricula.add(jlblSenhaTelaLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 59, -1));
 
         jbtnConfirmarTelaLogin.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jbtnConfirmarTelaLogin.setText("Confirmar");
+        jpAlunoMatricula.add(jbtnConfirmarTelaLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
 
         jbtnCancelarTelaLogin.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jbtnCancelarTelaLogin.setText("Cancelar");
@@ -99,76 +136,38 @@ public class telaLoginFuncionario extends javax.swing.JFrame {
                 jbtnCancelarTelaLoginActionPerformed(evt);
             }
         });
+        jpAlunoMatricula.add(jbtnCancelarTelaLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, -1, -1));
 
         jpfSenhaTelaLogin.setToolTipText("Insira uma senha de no mínimo 6 caracteres contendo Maísculas, mínusculas, números e caracters especiais.");
+        jpAlunoMatricula.add(jpfSenhaTelaLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 180, -1));
 
         jlblEsqueciSenha.setFont(new java.awt.Font("Palatino Linotype", 0, 12)); // NOI18N
         jlblEsqueciSenha.setForeground(new java.awt.Color(0, 102, 255));
         jlblEsqueciSenha.setText("Esqueci minha senha");
+        jpAlunoMatricula.add(jlblEsqueciSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, -1, -1));
 
-        javax.swing.GroupLayout jpAlunoMatriculaLayout = new javax.swing.GroupLayout(jpAlunoMatricula);
-        jpAlunoMatricula.setLayout(jpAlunoMatriculaLayout);
-        jpAlunoMatriculaLayout.setHorizontalGroup(
-            jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpAlunoMatriculaLayout.createSequentialGroup()
-                .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpAlunoMatriculaLayout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(jlblNomeAlunoMatricula6))
-                    .addGroup(jpAlunoMatriculaLayout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(jbtnConfirmarTelaLogin)
-                        .addGap(55, 55, 55)
-                        .addComponent(jbtnCancelarTelaLogin)))
-                .addContainerGap(86, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpAlunoMatriculaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jlblUsuarioTelaLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
-                    .addComponent(jlblSenhaTelaLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(88, 88, 88)
-                .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jtfUsuarioTelaLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                    .addComponent(jpfSenhaTelaLogin)
-                    .addComponent(jlblEsqueciSenha, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(27, 27, 27))
-        );
-        jpAlunoMatriculaLayout.setVerticalGroup(
-            jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpAlunoMatriculaLayout.createSequentialGroup()
-                .addGap(106, 106, 106)
-                .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlblUsuarioTelaLogin)
-                    .addComponent(jtfUsuarioTelaLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlblSenhaTelaLogin)
-                    .addComponent(jpfSenhaTelaLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jlblEsqueciSenha)
-                .addGap(18, 18, 18)
-                .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbtnConfirmarTelaLogin)
-                    .addComponent(jbtnCancelarTelaLogin))
-                .addGap(97, 97, 97)
-                .addComponent(jlblNomeAlunoMatricula6)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel1.setFont(new java.awt.Font("Bernard MT Condensed", 0, 23)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("SCHERHOM ACADEMIA");
+        jpAlunoMatricula.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Bernard MT Condensed", 0, 25)); // NOI18N
+        jLabel2.setText("SCHERHOM ACADEMIA");
+        jpAlunoMatricula.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jpAlunoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jpAlunoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jpAlunoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jpAlunoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -224,6 +223,8 @@ public class telaLoginFuncionario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JButton jbtnCancelarTelaLogin;
     private javax.swing.JButton jbtnConfirmarTelaLogin;
     private javax.swing.ButtonGroup jbtngSexoAlunoMatricula;

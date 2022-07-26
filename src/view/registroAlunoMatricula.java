@@ -6,7 +6,9 @@ package view;
 
 import java.sql.SQLException;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import services.PessoaServicos;
 
 /**
  *
@@ -54,6 +56,67 @@ public class registroAlunoMatricula extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
+    
+    public Boolean validaImputs() {
+        String telefone = jtfTelefoneAlunoMatricula5.getText();
+        if (jtfNomeAlunoMatricula.getText().isBlank()
+                || jtfRgAlunoMatricula.getText().isBlank()
+                || jtfCpfAlunoMatricula.getText().isBlank()
+                || jcbEstado.getSelectedItem().toString().equals("--")
+                || jtfEnderecoAlunoMatricula.getText().isBlank()
+                || jtfTelefoneAlunoMatricula5.getText().isBlank()
+                || jtfEmailAlunoMatricula01.getText().isBlank()
+                || jftfBirthdayAlunoMatricula.getText().isBlank()
+                || jbtngSexoAlunoMatricula.getSelection() == null){
+            JOptionPane.showMessageDialog(this,
+                    "Todos os campos devem ser preenchidos!",
+                    ".: Erro :.", JOptionPane.ERROR_MESSAGE);
+            jtfNomeAlunoMatricula.requestFocus();
+            return false;
+        }
+        if (telefone.length() != 10 && telefone.length() != 11) {
+            JOptionPane.showMessageDialog(this,
+                    "Telefone informado esta incorreto",
+                    ".: Erro :.", JOptionPane.ERROR_MESSAGE);
+            jtfTelefoneAlunoMatricula5.requestFocus();
+            return false;
+        }
+        /*if (!jtfIdade.getText().isBlank()) {
+            int idade = Integer.parseInt(jtfIdade.getText());
+            if (idade == 0 || idade > 120) {
+                JOptionPane.showMessageDialog(this,
+                        "Idade informada esta incorreta!",
+                        ".: Erro :.", JOptionPane.ERROR_MESSAGE);
+                jtfIdade.requestFocus();
+                return false;
+            }
+        }*/
+        if (btnClick.getText() == "Confirmar") {
+            try {
+                PessoaServicos pessoaS = ServicosFactory.getPessoaServicos();
+                if (!ValidaCPF.isCPF(jtfCPF.getText())) {
+                    JOptionPane.showMessageDialog(this,
+                            "CPF informado esta incorreto!!!",
+                            ".: Erro :.", JOptionPane.ERROR_MESSAGE);
+                    jtfCPF.requestFocus();
+                    return false;
+                } else if (pessoaS.verCpfBD(jtfCPF.getText())) {
+                    JOptionPane.showMessageDialog(this,
+                            "CPF já cadastrado!!!",
+                            ".: Erro :.", JOptionPane.ERROR_MESSAGE);
+                    jtfCPF.requestFocus();
+                    return false;
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this,
+                        "CPF já cadastrado!!!",
+                        ".: Erro :.", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        return true;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -180,7 +243,7 @@ public class registroAlunoMatricula extends javax.swing.JFrame {
             }
         });
 
-        jcbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RS", "SC", "PR", "SP" }));
+        jcbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--", "RS", "SC", "PR", "SP" }));
         jcbEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbEstadoActionPerformed(evt);
@@ -253,6 +316,11 @@ public class registroAlunoMatricula extends javax.swing.JFrame {
 
         jbtnConfirmarAlunoMatricula.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jbtnConfirmarAlunoMatricula.setText("Confirmar");
+        jbtnConfirmarAlunoMatricula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnConfirmarAlunoMatriculaActionPerformed(evt);
+            }
+        });
 
         jbtnCancelarAlunoMatricula.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jbtnCancelarAlunoMatricula.setText("Cancelar");
@@ -391,7 +459,7 @@ public class registroAlunoMatricula extends javax.swing.JFrame {
                 .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jbtnCancelarAlunoMatricula)
                     .addComponent(jbtnConfirmarAlunoMatricula))
-                .addContainerGap(193, Short.MAX_VALUE))
+                .addContainerGap(187, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -497,6 +565,38 @@ public class registroAlunoMatricula extends javax.swing.JFrame {
     private void jftfBirthdayAlunoMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jftfBirthdayAlunoMatriculaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jftfBirthdayAlunoMatriculaActionPerformed
+
+    private void jbtnConfirmarAlunoMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnConfirmarAlunoMatriculaActionPerformed
+        // TODO add your handling code here:
+        btnClick = (JButton) evt.getSource();
+        System.out.println(btnClick.getText());
+        
+
+        if (validaImputs()) {
+            try{
+                int id = cadPessoas.gerarId();
+                String nomePessoa = jtfNome.getText();
+                String cpf = jtfCPF.getText();
+                String endereco = jtfEndereco.getText();
+                String telefone = jtfTelefone.getText();
+                int idade = Integer.parseInt(jtfIdade.getText());
+                boolean status = jrbAtivo.isSelected();
+
+                Pessoa p = new Pessoa(id, nomePessoa, cpf, endereco, telefone, idade, status);
+                //cadPessoas.add(p);
+                PessoaServicos pessoaS = ServicosFactory.getPessoaServicos();
+                pessoaS.cadPessoa(p);
+
+                JOptionPane.showMessageDialog(this, "Pessoa foi salva com sucesso!");
+
+                jbLimpar.doClick();
+                addRowToTableBD();
+            } catch (SQLException ex){
+                    JOptionPane.showMessageDialog(rootPane, "Erro ao cadastrar!\n"
+                        + ex.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
+                    }
+        }
+    }//GEN-LAST:event_jbtnConfirmarAlunoMatriculaActionPerformed
 
     /**
      * @param args the command line arguments

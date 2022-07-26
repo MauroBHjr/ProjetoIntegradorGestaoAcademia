@@ -10,7 +10,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import view.telaLoginFuncionario;
 
 /**
  *
@@ -20,7 +22,7 @@ import javax.swing.JPanel;
 
 /* Ianda não sei explicar exatamente o que é o método com ActionListener
 eu deveria assistir algum vídeo explciando em maiores detalhes, mas falta tempo */
-public class ProjetoIntegradorGestaoDeAcademia implements ActionListener {
+public class ProjetoIntegradorGestaoDeAcademia {
     
     /*Em teoria, o DAO é substituto para o controller, certo?
     Então eu vou fazer assim A MENOS QUE exista uma forma mais adequada
@@ -39,7 +41,7 @@ public class ProjetoIntegradorGestaoDeAcademia implements ActionListener {
     JButton btnCadUser = new JButton("Cadastrar Funcionário");
     
     // Em teoria, aqui que estamos realmente criando a janela e etc
-    private ProjetoIntegradorGestaoDeAcademia() {
+    /*private ProjetoIntegradorGestaoDeAcademia() {
         PrimeiraJanela.setSize(400, 300);
         PrimeiraJanela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         painel.setLayout(new FlowLayout(FlowLayout.CENTER, 30, 20));
@@ -50,7 +52,7 @@ public class ProjetoIntegradorGestaoDeAcademia implements ActionListener {
         PrimeiraJanela.setVisible(true);
         btnCadPessoa.addActionListener(this);
         btnCadUser.addActionListener(this);
-    }
+    }*/
             
 
             
@@ -59,11 +61,30 @@ public class ProjetoIntegradorGestaoDeAcademia implements ActionListener {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        //String userAtendente = JOptionPane.showInputDialog(null,"Usuário:","SCHEROM ACADEMIA - LOGIN",JOptionPane.PLAIN_MESSAGE);
+        telaLoginFuncionario login = new telaLoginFuncionario();
+        login.setVisible(true);
+        login.setLocationRelativeTo(null);
+        login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        
+        
+        
+        
+        
+        /*if (userAtendente != ""){
+            menuLivraria menuPrincipal = new menuLivraria();
+//            JLabel jlblUserAtendente = new JLabel(userAtendente);
+//            jlblUserAtendente.setVisible(true);
+//            jlblUserAtendente.setSize(200, 100);
+            menuPrincipal.setVisible(true);
+            menuPrincipal.setLocationRelativeTo(null);
+//            menuPrincipal.add(jlblUserAtendente);
+            menuPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        } else {
+            System.out.println("Falha ao logar.");
+        }*/
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
+
 }

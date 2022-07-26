@@ -14,11 +14,21 @@ import java.sql.DriverManager;
  */
 public class Conexao {
     //cria constante com endereço do Banco d eDados e Schema
-    private static String url = "jdbc:mysql://localhost:3306/devn211";
+ //   private static String url = "jdbc:mysql://localhost:3306/devn211";
     //cria constante com user do BD
-    private static String user = "root";
+ //   private static String user = "root";
     //cria uma constante com senha do BD
-    private static String pass = "";
+  //  private static String pass = "";
+    
+    private static String url = "jdbc:mysql://mysql746.umbler.com:41890/devn211";
+
+  //cria uma constante com user do BD
+
+  private static String user = "devn211";
+
+  //cria uma constante com senha do BD
+
+  private static String pass = "devn211senac";
     
     public static Connection getConexao() throws SQLException{
         //inicia conexão nula, ainda não estabelecida
