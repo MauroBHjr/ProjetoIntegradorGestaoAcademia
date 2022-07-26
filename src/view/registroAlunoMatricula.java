@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import services.PessoaServicos;
+import services.ServicosFactory;
 
 /**
  *
@@ -91,20 +92,20 @@ public class registroAlunoMatricula extends javax.swing.JFrame {
                 return false;
             }
         }*/
-        if (btnClick.getText() == "Confirmar") {
+        /*if (btnClick.getText() == "Confirmar") {
             try {
                 PessoaServicos pessoaS = ServicosFactory.getPessoaServicos();
                 if (!ValidaCPF.isCPF(jtfCPF.getText())) {
                     JOptionPane.showMessageDialog(this,
                             "CPF informado esta incorreto!!!",
                             ".: Erro :.", JOptionPane.ERROR_MESSAGE);
-                    jtfCPF.requestFocus();
+                    jtfCpfAlunoMatricula.requestFocus();
                     return false;
-                } else if (pessoaS.verCpfBD(jtfCPF.getText())) {
+                } else if (pessoaS.verCpfBD(jtfCpfAlunoMatricula.getText())) {
                     JOptionPane.showMessageDialog(this,
                             "CPF já cadastrado!!!",
                             ".: Erro :.", JOptionPane.ERROR_MESSAGE);
-                    jtfCPF.requestFocus();
+                    jtfCpfAlunoMatricula.requestFocus();
                     return false;
                 }
             } catch (SQLException ex) {
@@ -112,7 +113,7 @@ public class registroAlunoMatricula extends javax.swing.JFrame {
                         "CPF já cadastrado!!!",
                         ".: Erro :.", JOptionPane.ERROR_MESSAGE);
             }
-        }
+        }*/
         return true;
     }
     
@@ -191,10 +192,13 @@ public class registroAlunoMatricula extends javax.swing.JFrame {
         jlblEstadoAlunoMatricula.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jlblEstadoAlunoMatricula.setText("Estado");
 
-        jtfNomeAlunoMatricula.setText("Nome Completo");
+        jtfNomeAlunoMatricula.setText("Insira Nome Completo");
         jtfNomeAlunoMatricula.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jtfNomeAlunoMatriculaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfNomeAlunoMatriculaFocusLost(evt);
             }
         });
         jtfNomeAlunoMatricula.addActionListener(new java.awt.event.ActionListener() {
@@ -504,7 +508,9 @@ public class registroAlunoMatricula extends javax.swing.JFrame {
 
     private void jtfNomeAlunoMatriculaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfNomeAlunoMatriculaFocusGained
         // TODO add your handling code here:
-        jtfNomeAlunoMatricula.setText("");
+        if (jtfNomeAlunoMatricula.getText().equals("Insira Nome Completo")){
+            jtfNomeAlunoMatricula.setText("");
+        }
     }//GEN-LAST:event_jtfNomeAlunoMatriculaFocusGained
 
     private void jtfRgAlunoMatriculaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfRgAlunoMatriculaFocusGained
@@ -572,7 +578,7 @@ public class registroAlunoMatricula extends javax.swing.JFrame {
         System.out.println(btnClick.getText());
         
 
-        if (validaImputs()) {
+        /*if (validaImputs()) {
             try{
                 int id = cadPessoas.gerarId();
                 String nomePessoa = jtfNome.getText();
@@ -595,8 +601,15 @@ public class registroAlunoMatricula extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(rootPane, "Erro ao cadastrar!\n"
                         + ex.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
                     }
-        }
+        }*/
     }//GEN-LAST:event_jbtnConfirmarAlunoMatriculaActionPerformed
+
+    private void jtfNomeAlunoMatriculaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfNomeAlunoMatriculaFocusLost
+        // TODO add your handling code here:
+        if (jtfNomeAlunoMatricula.getText().equals("")){
+            jtfNomeAlunoMatricula.setText("Insira Nome Completo");
+        }
+    }//GEN-LAST:event_jtfNomeAlunoMatriculaFocusLost
 
     /**
      * @param args the command line arguments
