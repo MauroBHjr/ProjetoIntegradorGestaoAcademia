@@ -53,6 +53,109 @@ public class registroAlunoMatricula extends javax.swing.JFrame {
         }
     }
     */
+    
+    /*
+    create schema devm211;
+
+use devm211;
+
+CREATE TABLE pessoa (
+    idPessoa INT PRIMARY KEY AUTO_INCREMENT,
+    nomePessoa VARCHAR(60) NOT NULL,
+    cpf VARCHAR(20) UNIQUE,
+    endereco VARCHAR(60),
+    telefone VARCHAR(20),
+    idade INT,
+    status BOOLEAN
+);
+
+create table carro(
+	idCarro int primary key auto_increment,
+    placa varchar(8) unique not null,
+    marca varchar(20),
+    modelo varchar(30),
+    anoFabricacao int,
+    anoModelo int,
+    cor varchar(10),
+    nPortas int,
+    idPessoa int,
+    foreign key (idPessoa) references pessoa(idPessoa)
+);
+    
+    
+    
+    
+    
+    --
+-- Estrutura da tabela `cliente`
+--
+create schema mLivraria;
+
+use mLivraria;
+
+CREATE TABLE `cliente` (
+  `idCliente` int(11) NOT NULL auto_increment primary key,
+  `nomeCliente` varchar(45) NOT NULL,
+  `cpf` varchar(20) DEFAULT NULL unique,
+  `cnpj` varchar(20) DEFAULT NULL unique,
+  `endereco` varchar(60) NOT NULL,
+  `telefone` varchar(20) NOT NULL  
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+--
+-- Estrutura da tabela `editora`
+--
+
+CREATE TABLE `editora` (
+  `idEditora` int(11) NOT NULL auto_increment primary key,
+  `nmEditora` varchar(45) NOT NULL,
+  `endereco` varchar(60) NOT NULL,
+  `telefone` varchar(11) NOT NULL,
+  `gerente` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Estrutura da tabela `livro`
+--
+
+CREATE TABLE `livro` (
+  `idLivro` int(11) NOT NULL auto_increment primary key,
+  `titulo` varchar(45) NOT NULL,
+  `autor` varchar(45) NOT NULL,
+  `assunto` varchar(45) NOT NULL,
+  `isbn` varchar(13) NOT NULL unique,
+  `estoque` int(11) NOT NULL,
+  `preco` decimal(10,2) NOT NULL,
+  `idEditora` int(11) NOT NULL,
+  foreign key (idEditora) references editora(idEditora)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+--
+-- Estrutura da tabela `compra`
+--
+
+CREATE TABLE `vendaLivro` (
+  `idCliente` int(11) NOT NULL auto_increment primary key,
+  `idLivro` int(11) NOT NULL,
+  `qtd` int(11) NOT NULL,
+  `subTotal` decimal(10,2) NOT NULL,
+  `dataCompra` date NOT NULL,
+foreign key (idCliente) references cliente(idCliente),
+foreign key (idLivro) references livro(idLivro)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    
+    
+    
+    
+    */
+    
+    
+    
+    
+    
     public registroAlunoMatricula() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -157,6 +260,7 @@ public class registroAlunoMatricula extends javax.swing.JFrame {
         jbtnConfirmarAlunoMatricula = new javax.swing.JButton();
         jbtnCancelarAlunoMatricula = new javax.swing.JButton();
         jftfBirthdayAlunoMatricula = new javax.swing.JFormattedTextField();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -338,6 +442,12 @@ public class registroAlunoMatricula extends javax.swing.JFrame {
             }
         });
 
+        try {
+            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###-#")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout jpAlunoMatriculaLayout = new javax.swing.GroupLayout(jpAlunoMatricula);
         jpAlunoMatricula.setLayout(jpAlunoMatriculaLayout);
         jpAlunoMatriculaLayout.setHorizontalGroup(
@@ -366,13 +476,13 @@ public class registroAlunoMatricula extends javax.swing.JFrame {
                                     .addGroup(jpAlunoMatriculaLayout.createSequentialGroup()
                                         .addComponent(jlblCidadeAlunoMatricula)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jtfCidadeAlunoMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE))))
+                                        .addComponent(jtfCidadeAlunoMatricula))))
                             .addGroup(jpAlunoMatriculaLayout.createSequentialGroup()
                                 .addComponent(jtfEnderecoAlunoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(8, 8, 8)
                                 .addComponent(jtfEnderecoComplementarAlunoMatricula))
                             .addGroup(jpAlunoMatriculaLayout.createSequentialGroup()
-                                .addComponent(jtfRgAlunoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jlblSexoAlunoMatricula)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -412,6 +522,10 @@ public class registroAlunoMatricula extends javax.swing.JFrame {
                             .addComponent(jlblCPFAlunoMatricula))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jpAlunoMatriculaLayout.createSequentialGroup()
+                .addGap(102, 102, 102)
+                .addComponent(jtfRgAlunoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpAlunoMatriculaLayout.setVerticalGroup(
             jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -424,9 +538,9 @@ public class registroAlunoMatricula extends javax.swing.JFrame {
                 .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlblRGAlunoMatricula)
                     .addComponent(jlblSexoAlunoMatricula)
-                    .addComponent(jtfRgAlunoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jrbSexoMasculinoAlunoMatricula)
-                    .addComponent(jrbSexoFemininoAlunoMatricula))
+                    .addComponent(jrbSexoFemininoAlunoMatricula)
+                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlblCPFAlunoMatricula)
@@ -463,7 +577,9 @@ public class registroAlunoMatricula extends javax.swing.JFrame {
                 .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jbtnCancelarAlunoMatricula)
                     .addComponent(jbtnConfirmarAlunoMatricula))
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addComponent(jtfRgAlunoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -650,6 +766,7 @@ public class registroAlunoMatricula extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JButton jbtnCancelarAlunoMatricula;
     private javax.swing.JButton jbtnConfirmarAlunoMatricula;
     private javax.swing.ButtonGroup jbtngSexoAlunoMatricula;

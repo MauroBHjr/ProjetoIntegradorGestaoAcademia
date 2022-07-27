@@ -77,7 +77,7 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jlblCidadeAlunoMatricula" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jtfCidadeAlunoMatricula" pref="208" max="32767" attributes="0"/>
+                                          <Component id="jtfCidadeAlunoMatricula" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -87,7 +87,7 @@
                                   <Component id="jtfEnderecoComplementarAlunoMatricula" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jtfRgAlunoMatricula" min="-2" pref="125" max="-2" attributes="0"/>
+                                  <Component id="jFormattedTextField1" min="-2" pref="125" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jlblSexoAlunoMatricula" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -145,6 +145,11 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
+                  <Component id="jtfRgAlunoMatricula" min="-2" pref="125" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -159,9 +164,9 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jlblRGAlunoMatricula" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jlblSexoAlunoMatricula" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jtfRgAlunoMatricula" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jrbSexoMasculinoAlunoMatricula" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jrbSexoFemininoAlunoMatricula" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jFormattedTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -208,7 +213,9 @@
                       <Component id="jbtnCancelarAlunoMatricula" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jbtnConfirmarAlunoMatricula" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="187" max="32767" attributes="0"/>
+                  <EmptySpace pref="97" max="32767" attributes="0"/>
+                  <Component id="jtfRgAlunoMatricula" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -465,6 +472,13 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jftfBirthdayAlunoMatriculaActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField1">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+              <Format format="##.###.###-#" subtype="-1" type="5"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
