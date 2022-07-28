@@ -14,7 +14,9 @@ public class DAOFactory {
         return personDAO;
     }
     
-    
-    
+    private static UsuarioDAO userDAO = new UsuarioDAO();
+    public static UsuarioDAO getUsuarioDAO(){
+        return userDAO;
+    }
     
 }

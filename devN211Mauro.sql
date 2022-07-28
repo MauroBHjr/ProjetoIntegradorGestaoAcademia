@@ -1,5 +1,3 @@
-create schema devN211Mauro;
-
 create table usuario
 (
 	idUsuario INT PRIMARY KEY AUTO_INCREMENT,

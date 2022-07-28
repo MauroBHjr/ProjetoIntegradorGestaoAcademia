@@ -14,5 +14,9 @@ public class ServicosFactory {
         return pessoaServicos;
     }
     
+    private static UsuarioServicos userServicos = new UsuarioServicos();
+    public static UsuarioServicos getUsuarioServicos(){
+        return userServicos;
+    }
     
 }

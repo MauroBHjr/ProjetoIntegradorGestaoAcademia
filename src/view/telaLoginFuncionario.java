@@ -7,10 +7,15 @@ package view;
 import java.awt.FlowLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import model.Usuario;
+import services.ServicosFactory;
 
 /**
  *
@@ -23,9 +28,9 @@ public class telaLoginFuncionario extends javax.swing.JFrame {
      */
     public telaLoginFuncionario() {
         initComponents();
-        
+
         jlblEsqueciSenha.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e){
+            public void mouseClicked(MouseEvent e) {
                 System.out.println("clicado");
                 //tenho que ver como voou fazer o frame
                 JFrame frameRecuperaSenha = new JFrame("Recuperar senha");
@@ -33,18 +38,18 @@ public class telaLoginFuncionario extends javax.swing.JFrame {
                 JLabel jlblAvisoSairRecuperarSenha = new JLabel("Função ainda não implementada, favor fechar.");
                 JButton jbtnSairRecuperarSenha = new JButton("OK");
                 frameRecuperaSenha.setVisible(true);
-                
+
                 frameRecuperaSenha.setSize(400, 300);
                 frameRecuperaSenha.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frameRecuperaSenha.setLayout(new FlowLayout(FlowLayout.CENTER, 30, 20));
                 painelRecuperarSenha.add(jlblAvisoSairRecuperarSenha);
                 painelRecuperarSenha.add(jbtnSairRecuperarSenha);
-        //janela.add(painel);
-        //janela.setVisible(true);
-        //btnCadPessoa.addActionListener(this);
-        //btnCadCarros.addActionListener(this);
-        
-        /*
+                //janela.add(painel);
+                //janela.setVisible(true);
+                //btnCadPessoa.addActionListener(this);
+                //btnCadCarros.addActionListener(this);
+
+                /*
         try (UsuarioServicos uServicos = ServicosFactory.getUsuarioServicos();) {
             Usuario u = uServicos.getByUsuario(jtfUsuario.getText());
             String senha = NLogin.geraSenha(String.valueOf(jpfSenha.getPassword()));
@@ -61,16 +66,22 @@ public class telaLoginFuncionario extends javax.swing.JFrame {
         } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
-        */
-                
-                
-                
+                 */
             }
         });
 
-        
-        
-        
+    }
+
+    public static String geraSenha(String senha) throws NoSuchAlgorithmException,
+            UnsupportedEncodingException {
+        MessageDigest mdMD5 = MessageDigest.getInstance("MD5");
+        byte mdByteMD5[] = mdMD5.digest(senha.getBytes("UTF-8"));
+        StringBuilder hexMDMD5 = new StringBuilder();
+        for (byte b : mdByteMD5) {
+            hexMDMD5.append(String.format("%02X", 0xFF & b));
+        }
+        String senhaMD5HashHex = hexMDMD5.toString();
+        return senhaMD5HashHex;
     }
 
     /**
@@ -127,6 +138,11 @@ public class telaLoginFuncionario extends javax.swing.JFrame {
 
         jbtnConfirmarTelaLogin.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jbtnConfirmarTelaLogin.setText("Confirmar");
+        jbtnConfirmarTelaLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnConfirmarTelaLoginActionPerformed(evt);
+            }
+        });
         jpAlunoMatricula.add(jbtnConfirmarTelaLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
 
         jbtnCancelarTelaLogin.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
@@ -185,6 +201,28 @@ public class telaLoginFuncionario extends javax.swing.JFrame {
     private void jbtnCancelarTelaLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCancelarTelaLoginActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jbtnCancelarTelaLoginActionPerformed
+
+    private void jbtnConfirmarTelaLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnConfirmarTelaLoginActionPerformed
+        // TODO add your handling code here:
+        try ( UsuarioServicos uServicos = ServicosFactory.getUsuarioServicos();  Usuario u = uServicos.getByUsuario(jtfUsuarioTelaLogin);) {
+
+            UsuarioServicos uServicos = ServicosFactory.getUsuarioServicos();
+            Usuario u = uServicos.getByUsuario(jtfUsuario.getText());
+            String senha = NLogin.geraSenha(String.valueOf(jpfSenha.getPassword()));
+            if (senha.equals(u.getSenha())) {
+                Principal pForm = new Principal();
+                pForm.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Usuário ou senha incorretos.", ".: Erro Login :.", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jbtnConfirmarTelaLoginActionPerformed
 
     /**
      * @param args the command line arguments
