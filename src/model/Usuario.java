@@ -53,6 +53,7 @@ public class Usuario {
     }
 
     public void setSenha(String senha) {
+        //também poderia implementar o geraSenha aqui
         this.senha = senha;
     }
 

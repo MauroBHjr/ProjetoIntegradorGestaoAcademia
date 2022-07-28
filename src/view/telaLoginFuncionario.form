@@ -82,7 +82,8 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jtfUsuarioTelaLogin">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Entre 6 a 18 caracteres"/>
+            <Property name="text" type="java.lang.String" value="usuario"/>
+            <Property name="toolTipText" type="java.lang.String" value="Insira seu usu&#xe1;rio"/>
           </Properties>
           <Events>
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtfUsuarioTelaLoginFocusGained"/>
@@ -141,6 +142,7 @@
         </Component>
         <Component class="javax.swing.JPasswordField" name="jpfSenhaTelaLogin">
           <Properties>
+            <Property name="text" type="java.lang.String" value="senha"/>
             <Property name="toolTipText" type="java.lang.String" value="Insira uma senha de no m&#xed;nimo 6 caracteres contendo Ma&#xed;sculas, m&#xed;nusculas, n&#xfa;meros e caracters especiais."/>
           </Properties>
           <Constraints>

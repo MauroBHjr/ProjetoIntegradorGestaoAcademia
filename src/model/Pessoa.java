@@ -5,6 +5,7 @@
 package model;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 /**
  *
@@ -151,8 +152,8 @@ public class Pessoa {
         return idade;
     }
 
-    public void setIdade(short idade) {
-        this.idade = idade;
+    public void setIdade() {
+        this.idade = (short) Period.between(this.birthdayPessoa, LocalDate.now()).getYears();
     }
 
     public String getSexoPessoa() {
@@ -167,7 +168,7 @@ public class Pessoa {
         return notificaEmail;
     }
 
-    public void setNotificaEmail(boolean notificaEmai) {
+    public void setNotificaEmail(boolean notificaEmail) {
         this.notificaEmail = notificaEmail;
     }
 

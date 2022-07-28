@@ -160,65 +160,7 @@ foreign key (idLivro) references livro(idLivro)
         initComponents();
         this.setLocationRelativeTo(null);
     }
-    
-    public Boolean validaImputs() {
-        String telefone = jtfTelefoneAlunoMatricula5.getText();
-        if (jtfNomeAlunoMatricula.getText().isBlank()
-                || jtfRgAlunoMatricula.getText().isBlank()
-                || jtfCpfAlunoMatricula.getText().isBlank()
-                || jcbEstado.getSelectedItem().toString().equals("--")
-                || jtfEnderecoAlunoMatricula.getText().isBlank()
-                || jtfTelefoneAlunoMatricula5.getText().isBlank()
-                || jtfEmailAlunoMatricula01.getText().isBlank()
-                || jftfBirthdayAlunoMatricula.getText().isBlank()
-                || jbtngSexoAlunoMatricula.getSelection() == null){
-            JOptionPane.showMessageDialog(this,
-                    "Todos os campos devem ser preenchidos!",
-                    ".: Erro :.", JOptionPane.ERROR_MESSAGE);
-            jtfNomeAlunoMatricula.requestFocus();
-            return false;
-        }
-        if (telefone.length() != 10 && telefone.length() != 11) {
-            JOptionPane.showMessageDialog(this,
-                    "Telefone informado esta incorreto",
-                    ".: Erro :.", JOptionPane.ERROR_MESSAGE);
-            jtfTelefoneAlunoMatricula5.requestFocus();
-            return false;
-        }
-        /*if (!jtfIdade.getText().isBlank()) {
-            int idade = Integer.parseInt(jtfIdade.getText());
-            if (idade == 0 || idade > 120) {
-                JOptionPane.showMessageDialog(this,
-                        "Idade informada esta incorreta!",
-                        ".: Erro :.", JOptionPane.ERROR_MESSAGE);
-                jtfIdade.requestFocus();
-                return false;
-            }
-        }*/
-        /*if (btnClick.getText() == "Confirmar") {
-            try {
-                PessoaServicos pessoaS = ServicosFactory.getPessoaServicos();
-                if (!ValidaCPF.isCPF(jtfCPF.getText())) {
-                    JOptionPane.showMessageDialog(this,
-                            "CPF informado esta incorreto!!!",
-                            ".: Erro :.", JOptionPane.ERROR_MESSAGE);
-                    jtfCpfAlunoMatricula.requestFocus();
-                    return false;
-                } else if (pessoaS.verCpfBD(jtfCpfAlunoMatricula.getText())) {
-                    JOptionPane.showMessageDialog(this,
-                            "CPF já cadastrado!!!",
-                            ".: Erro :.", JOptionPane.ERROR_MESSAGE);
-                    jtfCpfAlunoMatricula.requestFocus();
-                    return false;
-                }
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(this,
-                        "CPF já cadastrado!!!",
-                        ".: Erro :.", JOptionPane.ERROR_MESSAGE);
-            }
-        }*/
-        return true;
-    }
+}
     
     
 
@@ -245,10 +187,8 @@ foreign key (idLivro) references livro(idLivro)
         jlblCidadeAlunoMatricula = new javax.swing.JLabel();
         jlblEstadoAlunoMatricula = new javax.swing.JLabel();
         jtfNomeAlunoMatricula = new javax.swing.JTextField();
-        jtfRgAlunoMatricula = new javax.swing.JTextField();
         jrbSexoMasculinoAlunoMatricula = new javax.swing.JRadioButton();
         jrbSexoFemininoAlunoMatricula = new javax.swing.JRadioButton();
-        jtfCpfAlunoMatricula = new javax.swing.JTextField();
         jcbEstado = new javax.swing.JComboBox<>();
         jtfCidadeAlunoMatricula = new javax.swing.JTextField();
         jtfEnderecoAlunoMatricula = new javax.swing.JTextField();
@@ -260,7 +200,10 @@ foreign key (idLivro) references livro(idLivro)
         jbtnConfirmarAlunoMatricula = new javax.swing.JButton();
         jbtnCancelarAlunoMatricula = new javax.swing.JButton();
         jftfBirthdayAlunoMatricula = new javax.swing.JFormattedTextField();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        jftfDocumentoRGmatricula = new javax.swing.JFormattedTextField();
+        jftfDocumentoCPFmatricula = new javax.swing.JFormattedTextField();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -311,21 +254,6 @@ foreign key (idLivro) references livro(idLivro)
             }
         });
 
-        jtfRgAlunoMatricula.setText("Documento de RG");
-        jtfRgAlunoMatricula.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jtfRgAlunoMatriculaFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jtfRgAlunoMatriculaFocusLost(evt);
-            }
-        });
-        jtfRgAlunoMatricula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfRgAlunoMatriculaActionPerformed(evt);
-            }
-        });
-
         jbtngSexoAlunoMatricula.add(jrbSexoMasculinoAlunoMatricula);
         jrbSexoMasculinoAlunoMatricula.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jrbSexoMasculinoAlunoMatricula.setText("Masculino");
@@ -341,13 +269,6 @@ foreign key (idLivro) references livro(idLivro)
         jrbSexoFemininoAlunoMatricula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jrbSexoFemininoAlunoMatriculaActionPerformed(evt);
-            }
-        });
-
-        jtfCpfAlunoMatricula.setText("Documento de CPF");
-        jtfCpfAlunoMatricula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfCpfAlunoMatriculaActionPerformed(evt);
             }
         });
 
@@ -443,16 +364,26 @@ foreign key (idLivro) references livro(idLivro)
         });
 
         try {
-            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###-#")));
+            jftfDocumentoRGmatricula.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###-#")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+
+        try {
+            jftfDocumentoCPFmatricula.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        jCheckBox1.setText("Receber fatura e notificações por e-mail");
+
+        jCheckBox2.setText("Receber promoções e eventos por e-mail");
 
         javax.swing.GroupLayout jpAlunoMatriculaLayout = new javax.swing.GroupLayout(jpAlunoMatricula);
         jpAlunoMatricula.setLayout(jpAlunoMatriculaLayout);
         jpAlunoMatriculaLayout.setHorizontalGroup(
             jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpAlunoMatriculaLayout.createSequentialGroup()
+            .addGroup(jpAlunoMatriculaLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpAlunoMatriculaLayout.createSequentialGroup()
@@ -464,9 +395,12 @@ foreign key (idLivro) references livro(idLivro)
                             .addComponent(jtfNomeAlunoMatricula)
                             .addGroup(jpAlunoMatriculaLayout.createSequentialGroup()
                                 .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtfCpfAlunoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jcbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
+                                    .addGroup(jpAlunoMatriculaLayout.createSequentialGroup()
+                                        .addComponent(jcbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(71, 71, 71))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpAlunoMatriculaLayout.createSequentialGroup()
+                                        .addComponent(jftfDocumentoCPFmatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)))
                                 .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jpAlunoMatriculaLayout.createSequentialGroup()
                                         .addComponent(jlblBirthdayAlunoMatricula)
@@ -482,7 +416,7 @@ foreign key (idLivro) references livro(idLivro)
                                 .addGap(8, 8, 8)
                                 .addComponent(jtfEnderecoComplementarAlunoMatricula))
                             .addGroup(jpAlunoMatriculaLayout.createSequentialGroup()
-                                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jftfDocumentoRGmatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jlblSexoAlunoMatricula)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -504,17 +438,11 @@ foreign key (idLivro) references livro(idLivro)
                                         .addComponent(jlblNomeAlunoMatricula6)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jpAlunoMatriculaLayout.createSequentialGroup()
-                                        .addComponent(jbtnConfirmarAlunoMatricula)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(jpAlunoMatriculaLayout.createSequentialGroup()
-                                        .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jtfEmailAlunoMatricula01)
-                                            .addComponent(jtfTelefoneAlunoMatricula5))
-                                        .addGap(9, 9, 9)))))
+                                    .addComponent(jtfEmailAlunoMatricula01)
+                                    .addComponent(jtfTelefoneAlunoMatricula5))
+                                .addGap(9, 9, 9)))
                         .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jtfEmailAlunoMatricula02, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
-                            .addComponent(jbtnCancelarAlunoMatricula)
                             .addComponent(jtfTelefoneAlunoMatriculaAlt, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(jpAlunoMatriculaLayout.createSequentialGroup()
                         .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -522,10 +450,16 @@ foreign key (idLivro) references livro(idLivro)
                             .addComponent(jlblCPFAlunoMatricula))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jpAlunoMatriculaLayout.createSequentialGroup()
-                .addGap(102, 102, 102)
-                .addComponent(jtfRgAlunoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpAlunoMatriculaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jbtnConfirmarAlunoMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbtnCancelarAlunoMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(55, 55, 55)
+                .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBox2)
+                    .addComponent(jCheckBox1))
+                .addGap(15, 15, 15))
         );
         jpAlunoMatriculaLayout.setVerticalGroup(
             jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -540,13 +474,13 @@ foreign key (idLivro) references livro(idLivro)
                     .addComponent(jlblSexoAlunoMatricula)
                     .addComponent(jrbSexoMasculinoAlunoMatricula)
                     .addComponent(jrbSexoFemininoAlunoMatricula)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jftfDocumentoRGmatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlblCPFAlunoMatricula)
                     .addComponent(jlblBirthdayAlunoMatricula)
-                    .addComponent(jtfCpfAlunoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jftfBirthdayAlunoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jftfBirthdayAlunoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jftfDocumentoCPFmatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlblEstadoAlunoMatricula)
@@ -574,29 +508,33 @@ foreign key (idLivro) references livro(idLivro)
                             .addComponent(jtfEmailAlunoMatricula02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jlblEmailAlunoMatricula))))
                 .addGap(18, 18, 18)
-                .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jbtnCancelarAlunoMatricula)
+                .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBox1)
                     .addComponent(jbtnConfirmarAlunoMatricula))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
-                .addComponent(jtfRgAlunoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66))
+                .addGroup(jpAlunoMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpAlunoMatriculaLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBox2))
+                    .addGroup(jpAlunoMatriculaLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jbtnCancelarAlunoMatricula)))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jpAlunoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jpAlunoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jpAlunoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -606,10 +544,6 @@ foreign key (idLivro) references livro(idLivro)
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfNomeAlunoMatriculaActionPerformed
 
-    private void jtfRgAlunoMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfRgAlunoMatriculaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfRgAlunoMatriculaActionPerformed
-
     private void jrbSexoMasculinoAlunoMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbSexoMasculinoAlunoMatriculaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jrbSexoMasculinoAlunoMatriculaActionPerformed
@@ -618,27 +552,12 @@ foreign key (idLivro) references livro(idLivro)
         // TODO add your handling code here:
     }//GEN-LAST:event_jrbSexoFemininoAlunoMatriculaActionPerformed
 
-    private void jtfCpfAlunoMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCpfAlunoMatriculaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfCpfAlunoMatriculaActionPerformed
-
     private void jtfNomeAlunoMatriculaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfNomeAlunoMatriculaFocusGained
         // TODO add your handling code here:
         if (jtfNomeAlunoMatricula.getText().equals("Insira Nome Completo")){
             jtfNomeAlunoMatricula.setText("");
         }
     }//GEN-LAST:event_jtfNomeAlunoMatriculaFocusGained
-
-    private void jtfRgAlunoMatriculaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfRgAlunoMatriculaFocusGained
-        // TODO add your handling code here:
-        jtfRgAlunoMatricula.setText("");
-    }//GEN-LAST:event_jtfRgAlunoMatriculaFocusGained
-
-    private void jtfRgAlunoMatriculaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfRgAlunoMatriculaFocusLost
-        // TODO add your handling code here:
-        System.out.println(jtfRgAlunoMatricula.getText());
-        
-    }//GEN-LAST:event_jtfRgAlunoMatriculaFocusLost
 
     private void jtfCidadeAlunoMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCidadeAlunoMatriculaActionPerformed
         // TODO add your handling code here:
@@ -692,6 +611,34 @@ foreign key (idLivro) references livro(idLivro)
         // TODO add your handling code here:
         btnClick = (JButton) evt.getSource();
         System.out.println(btnClick.getText());
+        
+        btnClick = (JButton) evt.getSource();
+
+        if (validaInputs()) {
+            int id = 0;
+            String nomePessoa = jtfNome.getText();
+            String cpf = jtfCPFFormated.getText();
+            String endereco = jtfEndereco.getText();
+            String telefone = jtfTelefone.getText();
+            int idade = Integer.parseInt(jtfIdade.getText());
+            boolean status = jrbAtivo.isSelected();
+
+            Pessoa p = new Pessoa(id, nomePessoa, cpf, endereco, telefone, idade, status);
+            //cadPessoas.add(p);
+            PessoaServicos pessoaS = ServicosFactory.getPessoaServicos();
+            try {
+                pessoaS.cadPessoa(p);
+                jbLimpar.doClick();
+                //addRowToTable();
+                addRowToTableBD();
+                JOptionPane.showMessageDialog(this, "Pessoa foi salva com sucesso!");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(rootPane,
+                        "Erro! " + ex.getMessage(),
+                        "erro", JOptionPane.ERROR_MESSAGE);
+            }
+
+        }
         
 
         /*if (validaImputs()) {
@@ -766,12 +713,15 @@ foreign key (idLivro) references livro(idLivro)
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JButton jbtnCancelarAlunoMatricula;
     private javax.swing.JButton jbtnConfirmarAlunoMatricula;
     private javax.swing.ButtonGroup jbtngSexoAlunoMatricula;
     private javax.swing.JComboBox<String> jcbEstado;
     private javax.swing.JFormattedTextField jftfBirthdayAlunoMatricula;
+    private javax.swing.JFormattedTextField jftfDocumentoCPFmatricula;
+    private javax.swing.JFormattedTextField jftfDocumentoRGmatricula;
     private javax.swing.JLabel jlblBirthdayAlunoMatricula;
     private javax.swing.JLabel jlblCPFAlunoMatricula;
     private javax.swing.JLabel jlblCidadeAlunoMatricula;
@@ -787,14 +737,70 @@ foreign key (idLivro) references livro(idLivro)
     private javax.swing.JRadioButton jrbSexoFemininoAlunoMatricula;
     private javax.swing.JRadioButton jrbSexoMasculinoAlunoMatricula;
     private javax.swing.JTextField jtfCidadeAlunoMatricula;
-    private javax.swing.JTextField jtfCpfAlunoMatricula;
     private javax.swing.JTextField jtfEmailAlunoMatricula01;
     private javax.swing.JTextField jtfEmailAlunoMatricula02;
     private javax.swing.JTextField jtfEnderecoAlunoMatricula;
     private javax.swing.JTextField jtfEnderecoComplementarAlunoMatricula;
     private javax.swing.JTextField jtfNomeAlunoMatricula;
-    private javax.swing.JTextField jtfRgAlunoMatricula;
     private javax.swing.JTextField jtfTelefoneAlunoMatricula5;
     private javax.swing.JTextField jtfTelefoneAlunoMatriculaAlt;
     // End of variables declaration//GEN-END:variables
+
+    private boolean validaInputs() {
+        String telefone = jtfTelefoneAlunoMatricula5.getText();
+        if (jtfNomeAlunoMatricula.getText().isBlank()
+                || jftfDocumentoRGmatricula.getText().isBlank()
+                || jftfDocumentoCPFmatricula.getText().isBlank()
+                || jcbEstado.getSelectedItem().toString().equals("--")
+                || jtfEnderecoAlunoMatricula.getText().isBlank()
+                || jtfTelefoneAlunoMatricula5.getText().isBlank()
+                || jtfEmailAlunoMatricula01.getText().isBlank()
+                || jftfBirthdayAlunoMatricula.getText().isBlank()
+                || jbtngSexoAlunoMatricula.getSelection() == null){
+            JOptionPane.showMessageDialog(this,
+                    "Todos os campos devem ser preenchidos!",
+                    ".: Erro :.", JOptionPane.ERROR_MESSAGE);
+            jtfNomeAlunoMatricula.requestFocus();
+            return false;
+        }
+        if (telefone.length() != 10 && telefone.length() != 11) {
+            JOptionPane.showMessageDialog(this,
+                    "Telefone informado esta incorreto",
+                    ".: Erro :.", JOptionPane.ERROR_MESSAGE);
+            jtfTelefoneAlunoMatricula5.requestFocus();
+            return false;
+        }
+        /*if (!jtfIdade.getText().isBlank()) {
+            int idade = Integer.parseInt(jtfIdade.getText());
+            if (idade == 0 || idade > 120) {
+                JOptionPane.showMessageDialog(this,
+                        "Idade informada esta incorreta!",
+                        ".: Erro :.", JOptionPane.ERROR_MESSAGE);
+                jtfIdade.requestFocus();
+                return false;
+            }
+        }*/
+        if (btnClick.getText() == "Confirmar") {
+            try {
+                PessoaServicos pessoaS = ServicosFactory.getPessoaServicos();
+               /* if (!ValidaCPF.isCPF(jtfCPF.getText())) {
+                    JOptionPane.showMessageDialog(this,
+                            "CPF informado esta incorreto!!!",
+                            ".: Erro :.", JOptionPane.ERROR_MESSAGE);
+                    jtfCpfAlunoMatricula.requestFocus();
+                    return false;
+                } else */if (pessoaS.verCpfBD(jftfDocumentoCPFmatricula.getText())) {
+                    JOptionPane.showMessageDialog(this,
+                            "CPF já cadastrado!!!",
+                            ".: Erro :.", JOptionPane.ERROR_MESSAGE);
+                    jftfDocumentoCPFmatricula.requestFocus();
+                    return false;
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this,
+                        "CPF já cadastrado!!!",
+                        ".: Erro :.", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        return true;
 }

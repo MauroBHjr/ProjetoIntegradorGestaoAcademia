@@ -43,7 +43,7 @@ public class UsuarioDAO {
         Usuario u = new Usuario();
         try ( Connection con = Conexao.getConexao();  Statement stat = con.createStatement();) {
             String sql;
-            sql = "select * from usuario where usuario='" + user + "'";
+            sql = "select * from usuario where usuario = '" + user + "'";
             ResultSet rs = stat.executeQuery(sql);
             while (rs.next()) {
                 u.setIdUsuario(rs.getInt("idUsuario"));

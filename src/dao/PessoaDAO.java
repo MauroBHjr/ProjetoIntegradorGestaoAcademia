@@ -66,6 +66,13 @@ public class PessoaDAO {
             int birthdayPessoa
             int idade
             boolean sexoPessoa
+            private int idPessoa;//PK
+    private LocalDate birthdayPessoa; //usado para data de Nascimento, ainda tenho dúvidas sobre qual tipo de variável implementar, visto que dateTime ficaria mais adequado
+    private short idade; //Recebe um cálculo de birthdatePessoa subtraindo o datetime atual, não lembro como faz.
+    private String sexoPessoa; //identifica o sexo biológico do indivíduo. Relevancia médica.
+    private boolean notificaEmail; //recebe notificações relevantes ao termos de serviço e cobrança por e-mail
+    private boolean notificaPromo; //recebe promoções, planos e etc por e-mail
+            
              */
             String sql; //A string que deve ser criada para enviar para o DB.
             sql = "insert into pessoa values "
@@ -79,10 +86,12 @@ public class PessoaDAO {
                     + pVO.getTelefonePessoa01() + "', '"
                     + pVO.getTelefonePessoa02() + "', '"
                     + pVO.getEmailAdressPessoa01() + "', '"
-                    + pVO.getEmailAdressPessoa02() + "', "
-                    //inserir cálculo de idade
+                    + pVO.getEmailAdressPessoa02() + "', '"
+                    + pVO.getBirthdayPessoa() + "', "
                     + pVO.getIdade() + ", '"
-                    + pVO.getSexoPessoa() + "');";
+                    + pVO.getSexoPessoa() + "', " 
+                    + pVO.isNotificaEmail() + ", "
+                    + pVO.isNotificaPromo() + "');";
             //O que exatamente faz o execute sql eu não sei, mas presumo ser
             //o envio dessa tring para o banco
             stat.execute(sql);
@@ -152,9 +161,9 @@ public class PessoaDAO {
                 p.setTelefonePessoa02(rs.getString("telefonePessoa02"));
                 p.setEmailAdressPessoa01(rs.getString("emailAdressPessoa01"));
                 p.setEmailAdressPessoa02(rs.getString("emailAdressPessoa02"));
-                p.setBirthdayPessoa(rs.getInt("birthdayPessoa"));
-                p.setIdade(rs.getInt("idade"));
-                p.setSexoPessoa(rs.getBoolean("sexoPessoa"));
+                p.setBirthdayPessoa(rs.getDate("birthdayPessoa"));
+                p.setIdade();
+                p.setSexoPessoa(rs.getString("sexoPessoa"));
                 /* vvvv popula arraylist e armazena os dados do banco de dados
                     para que possamos trabalhar com eles dentro do java*/
                 pessoas.add(p);
@@ -222,9 +231,9 @@ public class PessoaDAO {
                 p.setTelefonePessoa02(rs.getString("telefonePessoa02"));
                 p.setEmailAdressPessoa01(rs.getString("emailAdressPessoa01"));
                 p.setEmailAdressPessoa02(rs.getString("emailAdressPessoa02"));
-                p.setBirthdayPessoa(rs.getInt("birthdayPessoa"));
-                p.setIdade(rs.getInt("idade"));
-                p.setSexoPessoa(rs.getBoolean("sexoPessoa"));
+                p.setBirthdayPessoa(rs.getDate("birthdayPessoa"));
+                p.setIdade();
+                p.setSexoPessoa(rs.getString("sexoPessoa"));
             }
         } catch (SQLException e) {
             throw new SQLException("Pessoa com este CPF não está cadastrada.\n"
@@ -284,8 +293,8 @@ public class PessoaDAO {
                            
                      */
                     + "birthdayPessoa = " + pVO.getBirthdayPessoa() + ", "
-                    + "idade = " + pVO.getIdade() + ", "
-                    + "sexoPessoa " + pVO.isSexoPessoa() + " "
+                    + "idade = " + pVO.getIdade() + ", '"
+                    + "sexoPessoa " + pVO.getSexoPessoa() + "', "
                     + "where idPessoa = " + pVO.getIdPessoa();
             stat.executeUpdate(sql);
         } catch (SQLException e) {

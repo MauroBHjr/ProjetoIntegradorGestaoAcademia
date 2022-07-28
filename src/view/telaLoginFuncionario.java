@@ -8,14 +8,20 @@ import java.awt.FlowLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.UnsupportedEncodingException;
+import java.lang.System.Logger;
+import java.lang.System.Logger.Level;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Usuario;
+import java.sql.SQLException;
+import javax.security.auth.login.LoginException;
 import services.ServicosFactory;
+import services.UsuarioServicos;
 
 /**
  *
@@ -31,8 +37,11 @@ public class telaLoginFuncionario extends javax.swing.JFrame {
 
         jlblEsqueciSenha.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                System.out.println("clicado");
+                //System.out.println("clicado");
                 //tenho que ver como voou fazer o frame
+                String recuperaSenhaUsuario = JOptionPane.showInputDialog(rootPane,"Insira seu usuário","Recuperação de Senha",JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(rootPane, "um e-mail foi enviado para restaurar sua senha.","Recuperação de Senha",JOptionPane.PLAIN_MESSAGE);
+                /*
                 JFrame frameRecuperaSenha = new JFrame("Recuperar senha");
                 JPanel painelRecuperarSenha = new JPanel();
                 JLabel jlblAvisoSairRecuperarSenha = new JLabel("Função ainda não implementada, favor fechar.");
@@ -44,6 +53,7 @@ public class telaLoginFuncionario extends javax.swing.JFrame {
                 frameRecuperaSenha.setLayout(new FlowLayout(FlowLayout.CENTER, 30, 20));
                 painelRecuperarSenha.add(jlblAvisoSairRecuperarSenha);
                 painelRecuperarSenha.add(jbtnSairRecuperarSenha);
+                */
                 //janela.add(painel);
                 //janela.setVisible(true);
                 //btnCadPessoa.addActionListener(this);
@@ -119,7 +129,8 @@ public class telaLoginFuncionario extends javax.swing.JFrame {
         jlblNomeAlunoMatricula6.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jpAlunoMatricula.add(jlblNomeAlunoMatricula6, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 331, -1, -1));
 
-        jtfUsuarioTelaLogin.setText("Entre 6 a 18 caracteres");
+        jtfUsuarioTelaLogin.setText("usuario");
+        jtfUsuarioTelaLogin.setToolTipText("Insira seu usuário");
         jtfUsuarioTelaLogin.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jtfUsuarioTelaLoginFocusGained(evt);
@@ -154,6 +165,7 @@ public class telaLoginFuncionario extends javax.swing.JFrame {
         });
         jpAlunoMatricula.add(jbtnCancelarTelaLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, -1, -1));
 
+        jpfSenhaTelaLogin.setText("senha");
         jpfSenhaTelaLogin.setToolTipText("Insira uma senha de no mínimo 6 caracteres contendo Maísculas, mínusculas, números e caracters especiais.");
         jpAlunoMatricula.add(jpfSenhaTelaLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 180, -1));
 
@@ -195,32 +207,72 @@ public class telaLoginFuncionario extends javax.swing.JFrame {
 
     private void jtfUsuarioTelaLoginFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfUsuarioTelaLoginFocusGained
         // TODO add your handling code here:
-        jtfUsuarioTelaLogin.setText("");
     }//GEN-LAST:event_jtfUsuarioTelaLoginFocusGained
 
     private void jbtnCancelarTelaLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCancelarTelaLoginActionPerformed
         // TODO add your handling code here:
+        //E8D95A51F3AF4A3B134BF6BB680A213A
+        //telaLoginFuncionario.dispose();
+        //dispose(telaLoginFuncionario);
+        System.exit(0);
+        
+        //telaLoginFuncionario.dispatchEvent(new WindowEvent(telaLoginFuncionario, WindowEvent.WINDOW_CLOSING));
+        /*
+        System.out.println(jtfUsuarioTelaLogin.getText());
+        System.out.println(jpfSenhaTelaLogin.getPassword());
+        char[] peixe = jpfSenhaTelaLogin.getPassword();
+        System.out.println(peixe);
+        String senha02 = String.valueOf(peixe);
+        try {
+            System.out.println(geraSenha(senha02));
+            
+            //String swordfish = geraSenha(jpfSenhaTelaLogin.getPassword());
+        } catch (NoSuchAlgorithmException ex) {
+            java.util.logging.Logger.getLogger(telaLoginFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            java.util.logging.Logger.getLogger(telaLoginFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        
+        //Usuario user = new Usuario();
+        //user.setNomeUsuario();
+        
+        //System.out.println(getby);
+        
+        */
     }//GEN-LAST:event_jbtnCancelarTelaLoginActionPerformed
 
     private void jbtnConfirmarTelaLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnConfirmarTelaLoginActionPerformed
         // TODO add your handling code here:
-        try ( UsuarioServicos uServicos = ServicosFactory.getUsuarioServicos();  Usuario u = uServicos.getByUsuario(jtfUsuarioTelaLogin);) {
+        try {
+            UsuarioServicos userServicos = ServicosFactory.getUsuarioServicos();
+            System.out.println(jtfUsuarioTelaLogin.getText());
+            System.out.println(jpfSenhaTelaLogin.getPassword());
+            Usuario user = userServicos.getByUsuario(jtfUsuarioTelaLogin.getText());
+            String swordfish = geraSenha(String.valueOf(jpfSenhaTelaLogin.getPassword()));
+            System.out.println(user);
+            System.out.println(swordfish);
 
-            UsuarioServicos uServicos = ServicosFactory.getUsuarioServicos();
-            Usuario u = uServicos.getByUsuario(jtfUsuario.getText());
-            String senha = NLogin.geraSenha(String.valueOf(jpfSenha.getPassword()));
-            if (senha.equals(u.getSenha())) {
-                Principal pForm = new Principal();
-                pForm.setVisible(true);
+            if (swordfish.equals(user.getSenha())) {
+                System.out.println("Chamar menu Principal");
+                JOptionPane.showMessageDialog(rootPane, "Login Bem sucedido");
+                
+                registroAlunoMatricula matricula = new registroAlunoMatricula();
+                
+                matricula.setVisible(true);
+                matricula.setLocationRelativeTo(null);
+                matricula.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                //sessao.setLoginSucedido(true);;
+//                Principal pForm = new Principal();
+//                pForm.setVisible(true);
             } else {
-                JOptionPane.showMessageDialog(rootPane, "Usuário ou senha incorretos.", ".: Erro Login :.", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(rootPane, "Usuário ou senha incorretos.", "Não foi possível conectar", JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(telaLoginFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(telaLoginFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(telaLoginFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jbtnConfirmarTelaLoginActionPerformed
 
