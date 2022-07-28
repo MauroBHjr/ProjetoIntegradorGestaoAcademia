@@ -9,7 +9,6 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
-import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -66,7 +65,6 @@ public class ProjetoIntegradorGestaoDeAcademia {
         //String userAtendente = JOptionPane.showInputDialog(null,"Usuário:","SCHEROM ACADEMIA - LOGIN",JOptionPane.PLAIN_MESSAGE);
         telaLoginFuncionario login = new telaLoginFuncionario();
         System.out.println("dia com Local Date: " + LocalDate.now());
-        System.out.println("dia com Date: " + Date. );
         login.setVisible(true);
         login.setLocationRelativeTo(null);
         login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

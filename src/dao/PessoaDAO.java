@@ -117,8 +117,8 @@ create table carro(
                     + pVO.getEmailAdressPessoa01() + "', '"
                     + pVO.getEmailAdressPessoa02() + "', "
                     //inserir cálculo de idade
-                    + pVO.getIdade() + ", "
-                    + pVO.isSexoPessoa() + ");";
+                    + pVO.getIdade() + ", '"
+                    + pVO.getSexoPessoa() + "');";
             //O que exatamente faz o execute sql eu não sei, mas presumo ser
             //o envio dessa tring para o banco
             stat.execute(sql);

@@ -25,8 +25,8 @@ public class Pessoa {
     private LocalDate birthdayPessoa; //usado para data de Nascimento, ainda tenho dúvidas sobre qual tipo de variável implementar, visto que dateTime ficaria mais adequado
     private short idade; //Recebe um cálculo de birthdatePessoa subtraindo o datetime atual, não lembro como faz.
     private String sexoPessoa; //identifica o sexo biológico do indivíduo. Relevancia médica.
-    private boolean notificaEmai; //
-    private boolean notificaPromo;
+    private boolean notificaEmail; //recebe notificações relevantes ao termos de serviço e cobrança por e-mail
+    private boolean notificaPromo; //recebe promoções, planos e etc por e-mail
     
     public Pessoa(){
         //Construtor vazio para usar os métodos acessores geters and seters
@@ -47,7 +47,7 @@ public class Pessoa {
         this.birthdayPessoa = birthdayPessoa;
         this.idade = idade;
         this.sexoPessoa = sexoPessoa;
-        this.notificaEmai = notificaEmai;
+        this.notificaEmail = notificaEmai;
         this.notificaPromo = notificaPromo;
     }
 
@@ -163,12 +163,12 @@ public class Pessoa {
         this.sexoPessoa = sexoPessoa;
     }
 
-    public boolean isNotificaEmai() {
-        return notificaEmai;
+    public boolean isNotificaEmail() {
+        return notificaEmail;
     }
 
-    public void setNotificaEmai(boolean notificaEmai) {
-        this.notificaEmai = notificaEmai;
+    public void setNotificaEmail(boolean notificaEmai) {
+        this.notificaEmail = notificaEmail;
     }
 
     public boolean isNotificaPromo() {
@@ -181,6 +181,6 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        return "Pessoa{" + "idPessoa=" + idPessoa + ", nomePessoa=" + nomePessoa + ", rgPessoa=" + rgPessoa + ", cpfPessoa=" + cpfPessoa + ", estadoPessoa=" + estadoPessoa + ", enderecoPessoa=" + enderecoPessoa + ", enderecoPessoaComplemento=" + enderecoPessoaComplemento + ", telefonePessoa01=" + telefonePessoa01 + ", telefonePessoa02=" + telefonePessoa02 + ", emailAdressPessoa01=" + emailAdressPessoa01 + ", emailAdressPessoa02=" + emailAdressPessoa02 + ", birthdayPessoa=" + birthdayPessoa + ", idade=" + idade + ", sexoPessoa=" + sexoPessoa + ", notificaEmai=" + notificaEmai + ", notificaPromo=" + notificaPromo + '}';
+        return "Pessoa{" + "idPessoa=" + idPessoa + ", nomePessoa=" + nomePessoa + ", rgPessoa=" + rgPessoa + ", cpfPessoa=" + cpfPessoa + ", estadoPessoa=" + estadoPessoa + ", enderecoPessoa=" + enderecoPessoa + ", enderecoPessoaComplemento=" + enderecoPessoaComplemento + ", telefonePessoa01=" + telefonePessoa01 + ", telefonePessoa02=" + telefonePessoa02 + ", emailAdressPessoa01=" + emailAdressPessoa01 + ", emailAdressPessoa02=" + emailAdressPessoa02 + ", birthdayPessoa=" + birthdayPessoa + ", idade=" + idade + ", sexoPessoa=" + sexoPessoa + ", notificaEmail=" + notificaEmail + ", notificaPromo=" + notificaPromo + '}';
     }
 }
