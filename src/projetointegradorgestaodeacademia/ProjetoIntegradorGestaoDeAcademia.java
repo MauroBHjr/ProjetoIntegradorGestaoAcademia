@@ -57,7 +57,7 @@ public class ProjetoIntegradorGestaoDeAcademia {
         // TODO code application logic here
         //String userAtendente = JOptionPane.showInputDialog(null,"Usuário:","SCHEROM ACADEMIA - LOGIN",JOptionPane.PLAIN_MESSAGE);
         Validacao sessao = new Validacao();
-        sessao.setLoginSucedido(false);
+        sessao.setLoginSucedido(false);// trabalhar com public static
 
         do {
             telaLoginFuncionario login = new telaLoginFuncionario();

@@ -5,9 +5,11 @@
 package view;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.Pessoa;
 import services.PessoaServicos;
 import services.ServicosFactory;
 
@@ -16,26 +18,25 @@ import services.ServicosFactory;
  * @author Mauro B H Jr
  */
 public class registroAlunoMatricula extends javax.swing.JFrame {
-    
+
     JButton btnClick = null;
 
     /**
      * Creates new form alunoMatricula
      */
-    
     /*
     =============================================================================================
     ================= talvez eu tenha quer colocar o "registroAlunoMatrícula" antes do rowtotable
     =============================================================================================
-    */
-    /*
+     */
+ /*
     public void addRowToTableBD() throws SQLException {
         //Cria obj model e recebe a modelagem da tabela JtPessoa do JFrame
         /*
         Necessária a criação do jTable Pessoas na janela para que possa ser exibido
         outra hora eu vejo onde eu vou inserir isso, mas fica aqui a referência de qualquer forma
         DefaultTableModel model = (DefaultTableModel) jtPessoas.getModel();
-        *//*
+     *//*
         model.getDataVector().removeAllElements();
         model.fireTableDataChanged();
         Object rowData[] = new Object[4]; //cria vetor para as colunas da tabela
@@ -52,54 +53,10 @@ public class registroAlunoMatricula extends javax.swing.JFrame {
             model.addRow(rowData);
         }
     }
-    */
-    
-    /*
-    create schema devm211;
+     */
 
-use devm211;
+ /* 
 
-CREATE TABLE pessoa (
-    idPessoa INT PRIMARY KEY AUTO_INCREMENT,
-    nomePessoa VARCHAR(60) NOT NULL,
-    cpf VARCHAR(20) UNIQUE,
-    endereco VARCHAR(60),
-    telefone VARCHAR(20),
-    idade INT,
-    status BOOLEAN
-);
-
-create table carro(
-	idCarro int primary key auto_increment,
-    placa varchar(8) unique not null,
-    marca varchar(20),
-    modelo varchar(30),
-    anoFabricacao int,
-    anoModelo int,
-    cor varchar(10),
-    nPortas int,
-    idPessoa int,
-    foreign key (idPessoa) references pessoa(idPessoa)
-);
-    
-    
-    
-    
-    
-    --
--- Estrutura da tabela `cliente`
---
-create schema mLivraria;
-
-use mLivraria;
-
-CREATE TABLE `cliente` (
-  `idCliente` int(11) NOT NULL auto_increment primary key,
-  `nomeCliente` varchar(45) NOT NULL,
-  `cpf` varchar(20) DEFAULT NULL unique,
-  `cnpj` varchar(20) DEFAULT NULL unique,
-  `endereco` varchar(60) NOT NULL,
-  `telefone` varchar(20) NOT NULL  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -150,26 +107,78 @@ foreign key (idLivro) references livro(idLivro)
     
     
     
-    */
-    
-    
-    
-    
-    
+     */
     public registroAlunoMatricula() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-}
     
-    
+    private boolean validaInputs() {
+        String telefone = jtfTelefoneAlunoMatricula5.getText();
+        if (jtfNomeAlunoMatricula.getText().isBlank()
+                || jftfDocumentoRGmatricula.getText().isBlank()
+                || jftfDocumentoCPFmatricula.getText().isBlank()
+                || jcbEstado.getSelectedItem().toString().equals("--")
+                || jtfEnderecoAlunoMatricula.getText().isBlank()
+                || jtfTelefoneAlunoMatricula5.getText().isBlank()
+                || jtfEmailAlunoMatricula01.getText().isBlank()
+                || jftfBirthdayAlunoMatricula.getText().isBlank()
+                || jbtngSexoAlunoMatricula.getSelection() == null){
+            JOptionPane.showMessageDialog(this,
+                    "Todos os campos devem ser preenchidos!",
+                    ".: Erro :.", JOptionPane.ERROR_MESSAGE);
+            jtfNomeAlunoMatricula.requestFocus();
+            return false;
+        }
+        if (telefone.length() != 10 && telefone.length() != 11) {
+            JOptionPane.showMessageDialog(this,
+                    "Telefone informado esta incorreto",
+                    ".: Erro :.", JOptionPane.ERROR_MESSAGE);
+            jtfTelefoneAlunoMatricula5.requestFocus();
+            return false;
+        }
+        /*if (!jtfIdade.getText().isBlank()) {
+            int idade = Integer.parseInt(jtfIdade.getText());
+            if (idade == 0 || idade > 120) {
+                JOptionPane.showMessageDialog(this,
+                        "Idade informada esta incorreta!",
+                        ".: Erro :.", JOptionPane.ERROR_MESSAGE);
+                jtfIdade.requestFocus();
+                return false;
+            }
+        }*/
+        if (btnClick.getText() == "Confirmar") {
+            try {
+                PessoaServicos pessoaS = ServicosFactory.getPessoaServicos();
+               /* if (!ValidaCPF.isCPF(jtfCPF.getText())) {
+                    JOptionPane.showMessageDialog(this,
+                            "CPF informado esta incorreto!!!",
+                            ".: Erro :.", JOptionPane.ERROR_MESSAGE);
+                    jtfCpfAlunoMatricula.requestFocus();
+                    return false;
+                } else */if (pessoaS.verCpfBD(jftfDocumentoCPFmatricula.getText())) {
+                    JOptionPane.showMessageDialog(this,
+                            "CPF já cadastrado!!!",
+                            ".: Erro :.", JOptionPane.ERROR_MESSAGE);
+                    jftfDocumentoCPFmatricula.requestFocus();
+                    return false;
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this,
+                        "CPF já cadastrado!!!",
+                        ".: Erro :.", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        return true;
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
-    @SuppressWarnings("unchecked")
+}
+
+/**
+ * This method is called from within the constructor to initialize the form.
+ * WARNING: Do NOT modify this code. The content of this method is always
+ * regenerated by the Form Editor.
+ */
+@SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -206,6 +215,9 @@ foreign key (idLivro) references livro(idLivro)
         jCheckBox2 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("SCHERHOM ACADEMIA - Nova Matrícula");
+
+        jpAlunoMatricula.setToolTipText("");
 
         jlblTelefoneAlunoMatricula.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jlblTelefoneAlunoMatricula.setText("Telefone");
@@ -299,6 +311,15 @@ foreign key (idLivro) references livro(idLivro)
         });
 
         jtfTelefoneAlunoMatricula5.setText("(xx) xxxxx-xxxx");
+        jtfTelefoneAlunoMatricula5.setToolTipText("Seu telefone (DDD) e números, apenas números");
+        jtfTelefoneAlunoMatricula5.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtfTelefoneAlunoMatricula5FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfTelefoneAlunoMatricula5FocusLost(evt);
+            }
+        });
         jtfTelefoneAlunoMatricula5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfTelefoneAlunoMatricula5ActionPerformed(evt);
@@ -354,8 +375,11 @@ foreign key (idLivro) references livro(idLivro)
         jbtnCancelarAlunoMatricula.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jbtnCancelarAlunoMatricula.setText("Cancelar");
 
-        jftfBirthdayAlunoMatricula.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
-        jftfBirthdayAlunoMatricula.setText("dd/mm/aaaa");
+        try {
+            jftfBirthdayAlunoMatricula.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         jftfBirthdayAlunoMatricula.setFocusLostBehavior(javax.swing.JFormattedTextField.COMMIT);
         jftfBirthdayAlunoMatricula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -368,12 +392,14 @@ foreign key (idLivro) references livro(idLivro)
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jftfDocumentoRGmatricula.setToolTipText("Documento de RG, apenas números.");
 
         try {
             jftfDocumentoCPFmatricula.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jftfDocumentoCPFmatricula.setToolTipText("Documento de CPF, apenas números");
 
         jCheckBox1.setText("Receber fatura e notificações por e-mail");
 
@@ -616,21 +642,22 @@ foreign key (idLivro) references livro(idLivro)
 
         if (validaInputs()) {
             int id = 0;
-            String nomePessoa = jtfNome.getText();
-            String cpf = jtfCPFFormated.getText();
-            String endereco = jtfEndereco.getText();
-            String telefone = jtfTelefone.getText();
-            int idade = Integer.parseInt(jtfIdade.getText());
-            boolean status = jrbAtivo.isSelected();
+            String nomePessoa = jtfNomeAlunoMatricula.getText();
+            String cpf = jftfDocumentoCPFmatricula.getText();
+            String endereco = jtfEnderecoAlunoMatricula.getText();
+            String telefone = jtfTelefoneAlunoMatricula5.getText();
 
-            Pessoa p = new Pessoa(id, nomePessoa, cpf, endereco, telefone, idade, status);
+            Pessoa p = new Pessoa(idPessoa, nomePessoa, rgPessoa, cpfPessoa, estadoPessoa, enderecoPessoa, enderecoPessoaComplemento, telefonePessoa01, telefonePessoa02, emailAdressPessoa01, emailAdressPessoa02, birthdayPessoa, idade, sexoPessoa, notificaEmai, notificaPromo);
+            //Pessoa p = new Pessoa();
+            
+            
             //cadPessoas.add(p);
-            PessoaServicos pessoaS = ServicosFactory.getPessoaServicos();
+            /* PessoaServicos pessoaS = ServicosFactory.getPessoaServicos();
             try {
-                pessoaS.cadPessoa(p);
-                jbLimpar.doClick();
+                pessoaS.cadPessoaServices(p);
+                //jbLimpar.doClick();
                 //addRowToTable();
-                addRowToTableBD();
+                //addRowToTableBD();
                 JOptionPane.showMessageDialog(this, "Pessoa foi salva com sucesso!");
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(rootPane,
@@ -665,6 +692,7 @@ foreign key (idLivro) references livro(idLivro)
                         + ex.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
                     }
         }*/
+        }
     }//GEN-LAST:event_jbtnConfirmarAlunoMatriculaActionPerformed
 
     private void jtfNomeAlunoMatriculaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfNomeAlunoMatriculaFocusLost
@@ -673,6 +701,20 @@ foreign key (idLivro) references livro(idLivro)
             jtfNomeAlunoMatricula.setText("Insira Nome Completo");
         }
     }//GEN-LAST:event_jtfNomeAlunoMatriculaFocusLost
+
+    private void jtfTelefoneAlunoMatricula5FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfTelefoneAlunoMatricula5FocusGained
+        // TODO add your handling code here:
+        if (jtfNomeAlunoMatricula.getText().equals("(xx) xxxxx-xxxx")){
+            jtfNomeAlunoMatricula.setText("");
+        }
+    }//GEN-LAST:event_jtfTelefoneAlunoMatricula5FocusGained
+
+    private void jtfTelefoneAlunoMatricula5FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfTelefoneAlunoMatricula5FocusLost
+        // TODO add your handling code here:
+        if (jtfNomeAlunoMatricula.getText().equals("")){
+            jtfNomeAlunoMatricula.setText("(xx) xxxxx-xxxx");
+        }
+    }//GEN-LAST:event_jtfTelefoneAlunoMatricula5FocusLost
 
     /**
      * @param args the command line arguments
@@ -688,16 +730,28 @@ foreign key (idLivro) references livro(idLivro)
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
+
+}
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(registroAlunoMatricula.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(registroAlunoMatricula.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(registroAlunoMatricula.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(registroAlunoMatricula.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(registroAlunoMatricula.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(registroAlunoMatricula.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(registroAlunoMatricula.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(registroAlunoMatricula.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -745,62 +799,4 @@ foreign key (idLivro) references livro(idLivro)
     private javax.swing.JTextField jtfTelefoneAlunoMatricula5;
     private javax.swing.JTextField jtfTelefoneAlunoMatriculaAlt;
     // End of variables declaration//GEN-END:variables
-
-    private boolean validaInputs() {
-        String telefone = jtfTelefoneAlunoMatricula5.getText();
-        if (jtfNomeAlunoMatricula.getText().isBlank()
-                || jftfDocumentoRGmatricula.getText().isBlank()
-                || jftfDocumentoCPFmatricula.getText().isBlank()
-                || jcbEstado.getSelectedItem().toString().equals("--")
-                || jtfEnderecoAlunoMatricula.getText().isBlank()
-                || jtfTelefoneAlunoMatricula5.getText().isBlank()
-                || jtfEmailAlunoMatricula01.getText().isBlank()
-                || jftfBirthdayAlunoMatricula.getText().isBlank()
-                || jbtngSexoAlunoMatricula.getSelection() == null){
-            JOptionPane.showMessageDialog(this,
-                    "Todos os campos devem ser preenchidos!",
-                    ".: Erro :.", JOptionPane.ERROR_MESSAGE);
-            jtfNomeAlunoMatricula.requestFocus();
-            return false;
         }
-        if (telefone.length() != 10 && telefone.length() != 11) {
-            JOptionPane.showMessageDialog(this,
-                    "Telefone informado esta incorreto",
-                    ".: Erro :.", JOptionPane.ERROR_MESSAGE);
-            jtfTelefoneAlunoMatricula5.requestFocus();
-            return false;
-        }
-        /*if (!jtfIdade.getText().isBlank()) {
-            int idade = Integer.parseInt(jtfIdade.getText());
-            if (idade == 0 || idade > 120) {
-                JOptionPane.showMessageDialog(this,
-                        "Idade informada esta incorreta!",
-                        ".: Erro :.", JOptionPane.ERROR_MESSAGE);
-                jtfIdade.requestFocus();
-                return false;
-            }
-        }*/
-        if (btnClick.getText() == "Confirmar") {
-            try {
-                PessoaServicos pessoaS = ServicosFactory.getPessoaServicos();
-               /* if (!ValidaCPF.isCPF(jtfCPF.getText())) {
-                    JOptionPane.showMessageDialog(this,
-                            "CPF informado esta incorreto!!!",
-                            ".: Erro :.", JOptionPane.ERROR_MESSAGE);
-                    jtfCpfAlunoMatricula.requestFocus();
-                    return false;
-                } else */if (pessoaS.verCpfBD(jftfDocumentoCPFmatricula.getText())) {
-                    JOptionPane.showMessageDialog(this,
-                            "CPF já cadastrado!!!",
-                            ".: Erro :.", JOptionPane.ERROR_MESSAGE);
-                    jftfDocumentoCPFmatricula.requestFocus();
-                    return false;
-                }
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(this,
-                        "CPF já cadastrado!!!",
-                        ".: Erro :.", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-        return true;
-}

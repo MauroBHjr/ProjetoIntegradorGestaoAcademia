@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import model.Pessoa;
 
@@ -161,7 +162,7 @@ public class PessoaDAO {
                 p.setTelefonePessoa02(rs.getString("telefonePessoa02"));
                 p.setEmailAdressPessoa01(rs.getString("emailAdressPessoa01"));
                 p.setEmailAdressPessoa02(rs.getString("emailAdressPessoa02"));
-                p.setBirthdayPessoa(rs.getDate("birthdayPessoa"));
+                p.setBirthdayPessoa(LocalDate.parse(rs.getDate("birthdayPessoa"),));
                 p.setIdade();
                 p.setSexoPessoa(rs.getString("sexoPessoa"));
                 /* vvvv popula arraylist e armazena os dados do banco de dados
