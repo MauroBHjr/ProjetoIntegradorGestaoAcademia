@@ -20,13 +20,13 @@ public class Conexao {
     //cria uma constante com senha do BD
     //  private static String pass = "";
 
-//    private static String url = "jdbc:mysql://mysql746.umbler.com:41890/devn211mauro";
-//    private static String user = "mauro";
-//    private static String pass = "devn211senac";
+    private static String url = "jdbc:mysql://mysql746.umbler.com:41890/devn211mauro";
+    private static String user = "mauro";
+    private static String pass = "devn211senac";
     
-    private static String url = "jdbc:mysql://localhost:3306/devn211maurolocal";
-    private static String user = "root";
-    private static String pass = "";
+//    private static String url = "jdbc:mysql://localhost:3306/devn211maurolocal";
+//    private static String user = "root";
+//    private static String pass = "";
     
 
     public static Connection getConexao() throws SQLException {
